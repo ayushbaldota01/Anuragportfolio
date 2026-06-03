@@ -114,7 +114,7 @@ export function PortfolioNav() {
               <Link
                 key={to}
                 to={to}
-                className="text-2xl font-serif font-medium tracking-tight text-foreground/80 hover:text-foreground transition-colors"
+                className="text-4xl md:text-5xl font-serif font-medium tracking-tight text-foreground/80 hover:text-foreground transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {label}

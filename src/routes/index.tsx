@@ -56,10 +56,10 @@ function Index() {
         </motion.div>
       </div>
 
-      <section className="page-container grid grid-cols-2 gap-x-3 gap-y-10 pb-4 md:gap-x-28 md:gap-y-24 md:pb-8">
+      <section className="page-container grid grid-cols-1 gap-x-3 gap-y-10 pb-4 md:grid-cols-2 md:gap-x-28 md:gap-y-24 md:pb-8">
         {works.map(([title, description, type, visual], index) => (
           <motion.article 
-            className={`group ${index % 2 ? "mt-10 md:mt-40" : ""}`} 
+            className={`group ${index % 2 ? "md:mt-40" : ""}`} 
             key={title}
             initial={{ opacity: 0, y: 60 }}
             whileInView={{ opacity: 1, y: 0 }}

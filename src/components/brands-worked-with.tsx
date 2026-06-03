@@ -57,7 +57,7 @@ function Item({
     <section
       ref={ref}
       key={index}
-      className="h-full w-1/2 flex justify-center items-center snap-center"
+      className="h-full w-full md:w-1/2 flex justify-center items-center snap-center px-4 md:px-0"
     >
       <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80">
         <a href={link} target="_blank" rel="noreferrer">
@@ -86,13 +86,13 @@ export function BrandsWorkedWith() {
   return (
     <div className="w-full h-screen flex">
       <div className="w-full h-full relative border-t border-border/20">
-        <div className="sticky top-0 h-screen w-full flex flex-col items-end justify-center text-foreground pr-4 md:pr-24">
-          <div ref={textContainerRef} className="w-1/2 pl-8 md:pl-0 flex flex-col items-start justify-center">
-             <p className="eyebrow text-xs uppercase tracking-widest text-muted-foreground mb-4 md:mb-8 font-sans">Brands We've Worked With</p>
+        <div className="sticky top-0 h-screen w-full flex flex-col items-center md:items-end justify-center text-foreground px-4 md:pr-24 z-10 pointer-events-none md:pointer-events-auto">
+          <div ref={textContainerRef} className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center drop-shadow-xl md:drop-shadow-none">
+             <p className="eyebrow text-[0.65rem] md:text-xs uppercase tracking-widest text-foreground md:text-muted-foreground mb-4 md:mb-8 font-sans drop-shadow-md md:drop-shadow-none text-center md:text-left">Brands We've Worked With</p>
             <TextRotate
               ref={textRotateRef}
               texts={brandExamples.map((image) => image.author)}
-              mainClassName="font-serif text-4xl sm:text-5xl md:text-7xl lg:text-8xl w-full justify-start flex pt-2"
+              mainClassName="font-serif text-5xl sm:text-5xl md:text-7xl lg:text-8xl w-full justify-center md:justify-start flex pt-2 drop-shadow-md md:drop-shadow-none text-center md:text-left"
               splitLevelClassName="overflow-hidden pb-2"
               staggerFrom={"first"}
               animatePresenceMode="wait"
