@@ -20,9 +20,9 @@ function WorkWithMe() {
         <PageHeader eyebrow="Collaborate" title="Work with me" />
         <p className="max-w-xl text-lg leading-8 text-muted-foreground">For founders, artists, studios, and cultural projects looking for a sharper visual voice.</p>
       </section>
-      <section className="mt-24 grid gap-4 md:grid-cols-2">
+      <section className="mt-24 grid gap-8 md:grid-cols-2">
         {services.map((s) => (
-          <div className="editorial-panel" key={s}>
+          <div className="py-6 transition-transform duration-300 hover:-translate-y-2" key={s}>
             <h2 className="font-serif text-3xl">{s}</h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">Add details, timelines, deliverables, and examples here.</p>
           </div>
