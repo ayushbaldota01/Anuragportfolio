@@ -76,8 +76,8 @@ export function LogoMarquee() {
       <div 
         className="relative flex w-full overflow-hidden"
         style={{
-          maskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)",
-          WebkitMaskImage: "linear-gradient(to right, transparent, black 15%, black 85%, transparent)"
+          maskImage: "linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.05) 10%, rgba(0, 0, 0, 0.3) 25%, rgba(0, 0, 0, 0.9) 42%, black 50%, rgba(0, 0, 0, 0.9) 58%, rgba(0, 0, 0, 0.3) 75%, rgba(0, 0, 0, 0.05) 90%, transparent 100%)",
+          WebkitMaskImage: "linear-gradient(to right, transparent 0%, rgba(0, 0, 0, 0.05) 10%, rgba(0, 0, 0, 0.3) 25%, rgba(0, 0, 0, 0.9) 42%, black 50%, rgba(0, 0, 0, 0.9) 58%, rgba(0, 0, 0, 0.3) 75%, rgba(0, 0, 0, 0.05) 90%, transparent 100%)"
         }}
       >
         <motion.div
@@ -96,7 +96,7 @@ export function LogoMarquee() {
             >
               <span 
                 style={logo.style}
-                className={`${logo.className} opacity-30 hover:opacity-100 transition-opacity duration-300 text-foreground cursor-default select-none`}
+                className={`${logo.className} text-white/90 hover:text-white transition-colors duration-300 cursor-default select-none`}
               >
                 {logo.name}
               </span>
