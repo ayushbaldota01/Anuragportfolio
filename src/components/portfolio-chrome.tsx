@@ -153,22 +153,30 @@ export function OpeningCurtain({ onComplete }: { onComplete?: () => void }) {
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const progress = useMotionValue(0);
-
   const hasEndedRef = useRef(false);
+
+  const handleVideoEnded = () => {
+    if (hasEndedRef.current) return;
+    hasEndedRef.current = true;
+    setPhase('ended');
+    onComplete?.();
+  };
 
   // Smoothly update progress at 60fps
   useAnimationFrame(() => {
-    if (videoRef.current && videoRef.current.duration) {
+    if (videoRef.current && !isNaN(videoRef.current.duration) && videoRef.current.duration > 0) {
       const vid = videoRef.current;
       progress.set(vid.currentTime / vid.duration);
 
       // CHANGE THIS VALUE to adjust exactly when the video stops (in seconds from the end)
       // For example, 1.2 will stop the video 1.2 seconds before it normally ends.
       const SECONDS_TO_CUT_EARLY = 2.2; 
+      
+      const targetTime = Math.max(0, vid.duration - SECONDS_TO_CUT_EARLY);
 
-      if (!hasEndedRef.current && vid.currentTime >= vid.duration - SECONDS_TO_CUT_EARLY) {
-        hasEndedRef.current = true;
-        vid.pause();
+      if (!hasEndedRef.current && vid.currentTime >= targetTime) {
+        // Safe pause inside try-catch to avoid play() interrupt errors
+        try { vid.pause(); } catch (e) { console.error(e); }
         handleVideoEnded();
       }
     }
@@ -176,7 +184,7 @@ export function OpeningCurtain({ onComplete }: { onComplete?: () => void }) {
 
   // Calculate dissolve smoothly at the end of the video
   const dissolve = useTransform(progress, (p) => {
-    if (!videoRef.current || !videoRef.current.duration) return 0;
+    if (!videoRef.current || isNaN(videoRef.current.duration) || !videoRef.current.duration) return 0;
     const remaining = videoRef.current.duration * (1 - p);
     if (remaining < 1.5) {
       const t = 1 - (remaining / 1.5);
@@ -202,13 +210,18 @@ export function OpeningCurtain({ onComplete }: { onComplete?: () => void }) {
 
   useEffect(() => {
     const t1 = setTimeout(() => setPhase('video'), 1800);
-    return () => clearTimeout(t1);
-  }, []);
+    
+    // Absolute fallback: if the video doesn't end within 8 seconds after mounting, force close the curtain
+    // This prevents the site from getting stuck on devices where video autoplay fails or is extremely slow
+    const t2 = setTimeout(() => {
+      handleVideoEnded();
+    }, 8000);
 
-  const handleVideoEnded = () => {
-    setPhase('ended');
-    onComplete?.();
-  };
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, []);
 
   return (
     <AnimatePresence mode="wait">
@@ -263,7 +276,11 @@ export function OpeningCurtain({ onComplete }: { onComplete?: () => void }) {
                 autoPlay
                 muted
                 playsInline
+                preload="auto"
                 onEnded={handleVideoEnded}
+                onError={handleVideoEnded}
+                onStalled={handleVideoEnded}
+                onSuspend={handleVideoEnded}
                 src="/intro.mp4"
               />
               {/* Vignette Overlay */}

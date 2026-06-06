@@ -23,7 +23,7 @@ function About() {
       </section>
       <section className="mt-28 grid grid-cols-1 gap-8 md:grid-cols-3">
         {["Direction", "Identity", "Story"].map((item) => (
-          <div className="editorial-panel" key={item}>
+          <div className="py-6 transition-transform duration-300 hover:-translate-y-2" key={item}>
             <h2 className="font-serif text-3xl">{item}</h2>
             <p className="mt-3 text-sm leading-6 text-muted-foreground">A short editable paragraph for your process, taste, and selected outcomes.</p>
           </div>
