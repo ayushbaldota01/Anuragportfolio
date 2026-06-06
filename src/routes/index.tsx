@@ -1,7 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "../components/portfolio-chrome";
 import { BrandsWorkedWith } from "../components/brands-worked-with";
-import { PhotoGallery } from "../components/ui/gallery";
+import { LogoMarquee } from "../components/ui/logo-marquee";
 import { motion } from "framer-motion";
 
 const works = [
@@ -87,7 +87,7 @@ function Index() {
         <BrandsWorkedWith />
       </div>
       
-      <PhotoGallery />
+      <LogoMarquee />
     </PageShell>
   );
 }
