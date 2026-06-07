@@ -8,7 +8,7 @@ const logoData = [
       fontWeight: 900,
       letterSpacing: "-0.05em",
     },
-    className: "text-2xl sm:text-3xl md:text-4xl"
+    className: "text-lg sm:text-xl md:text-2xl"
   },
   {
     name: "billboard",
@@ -17,7 +17,7 @@ const logoData = [
       fontWeight: 900,
       letterSpacing: "-0.06em",
     },
-    className: "text-2xl sm:text-3xl md:text-4xl lowercase"
+    className: "text-lg sm:text-xl md:text-2xl lowercase"
   },
   {
     name: "COMPLEX",
@@ -26,7 +26,7 @@ const logoData = [
       fontWeight: 900,
       letterSpacing: "0.15em",
     },
-    className: "text-lg sm:text-xl md:text-2xl uppercase"
+    className: "text-sm sm:text-base md:text-lg uppercase"
   },
   {
     name: "Forbes",
@@ -35,7 +35,7 @@ const logoData = [
       fontWeight: 800,
       letterSpacing: "-0.02em",
     },
-    className: "text-2xl sm:text-3xl md:text-4xl"
+    className: "text-lg sm:text-xl md:text-2xl"
   },
   {
     name: "Rolling Stone",
@@ -45,7 +45,7 @@ const logoData = [
       fontStyle: "italic" as const,
       letterSpacing: "-0.05em",
     },
-    className: "text-2xl sm:text-3xl md:text-4xl"
+    className: "text-lg sm:text-xl md:text-2xl"
   },
   {
     name: "VARIETY",
@@ -54,7 +54,7 @@ const logoData = [
       fontWeight: 400,
       letterSpacing: "0.25em",
     },
-    className: "text-xl sm:text-2xl md:text-3xl uppercase"
+    className: "text-base sm:text-lg md:text-xl uppercase"
   },
   {
     name: "W",
@@ -63,7 +63,7 @@ const logoData = [
       fontWeight: 900,
       letterSpacing: "-0.08em",
     },
-    className: "text-3xl sm:text-4xl md:text-5xl uppercase"
+    className: "text-xl sm:text-2xl md:text-3xl uppercase"
   }
 ];
 
@@ -72,7 +72,7 @@ const repeatedLogos = [...logoData, ...logoData, ...logoData, ...logoData];
 
 export function LogoMarquee() {
   return (
-    <section className="w-full py-10 md:py-16 overflow-hidden bg-linear-to-b from-amber-500/[0.03] via-transparent to-transparent border-t border-border/10">
+    <section className="w-full py-5 md:py-8 overflow-hidden bg-linear-to-b from-amber-500/[0.03] via-transparent to-transparent border-t border-border/10">
       <div 
         className="relative flex w-full overflow-hidden"
         style={{
@@ -92,7 +92,7 @@ export function LogoMarquee() {
           {repeatedLogos.map((logo, i) => (
             <div 
               key={i} 
-              className="flex items-center justify-center min-w-[140px] sm:min-w-[180px] md:min-w-[240px] px-6 md:px-10"
+              className="flex items-center justify-center min-w-[120px] sm:min-w-[150px] md:min-w-[200px] px-5 md:px-8"
             >
               <span 
                 style={logo.style}
@@ -107,4 +107,5 @@ export function LogoMarquee() {
     </section>
   );
 }
+
 
