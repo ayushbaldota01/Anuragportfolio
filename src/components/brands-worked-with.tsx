@@ -1,9 +1,7 @@
-"use client"
+"use client";
 
-import { useEffect, useRef } from "react"
-import { useInView } from "motion/react"
-
-import { TextRotate, TextRotateRef } from "@/components/ui/text-rotate"
+import { useRef, useState } from "react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
 const brandExamples = [
   {
@@ -31,93 +29,72 @@ const brandExamples = [
     author: "LVMH",
     link: "#",
   },
-]
-
-function Item({
-  index,
-  image,
-  link,
-  onInView,
-}: {
-  index: number
-  image: string
-  link: string
-  onInView: (inView: boolean) => void
-}) {
-  const ref = useRef<HTMLDivElement>(null)
-  const isInView = useInView(ref, {
-    margin: "-45% 0px -45% 0px",
-  })
-
-  useEffect(() => {
-    onInView(isInView)
-  }, [isInView, onInView])
-
-  return (
-    <section
-      ref={ref}
-      key={index}
-      className="h-full w-full md:w-1/2 flex justify-center items-center snap-center px-4 md:px-0"
-    >
-      <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80">
-        <a href={link} target="_blank" rel="noreferrer">
-          <img
-            src={image}
-            alt={`Example ${index + 1}`}
-            className="w-full h-full object-cover rounded-2xl grayscale hover:grayscale-0 transition-all duration-500"
-          />
-        </a>
-      </div>
-    </section>
-  )
-}
+];
 
 export function BrandsWorkedWith() {
-  const textRotateRef = useRef<TextRotateRef>(null)
-  const textContainerRef = useRef<HTMLDivElement>(null)
-  const isTextInView = useInView(textContainerRef, { once: true, margin: "-20% 0px -20% 0px" })
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
 
-  const handleInView = (index: number, inView: boolean) => {
-    if (inView && textRotateRef.current) {
-      textRotateRef.current.jumpTo(index)
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    // Distribute 0 to 1 progress across 5 sections
+    const newIndex = Math.min(Math.floor(latest * 5), 4);
+    if (newIndex !== activeIndex) {
+      setActiveIndex(newIndex);
     }
-  }
+  });
 
   return (
-    <div className="w-full h-screen flex">
-      <div className="w-full h-full relative border-t border-border/20">
-        <div className="sticky top-0 h-screen w-full flex flex-col items-center md:items-end justify-center text-foreground px-4 md:pr-24 z-10 pointer-events-none md:pointer-events-auto">
-          <div ref={textContainerRef} className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center drop-shadow-xl md:drop-shadow-none">
-             <p className="eyebrow text-[0.65rem] md:text-xs uppercase tracking-widest text-foreground md:text-muted-foreground mb-4 md:mb-8 font-sans drop-shadow-md md:drop-shadow-none text-center md:text-left">Brands We've Worked With</p>
-            <TextRotate
-              ref={textRotateRef}
-              texts={brandExamples.map((image) => image.author)}
-              mainClassName="font-serif text-5xl sm:text-5xl md:text-7xl lg:text-8xl w-full justify-center md:justify-start flex pt-2 drop-shadow-md md:drop-shadow-none text-center md:text-left"
-              splitLevelClassName="overflow-hidden pb-2"
-              staggerFrom={"first"}
-              animatePresenceMode="wait"
-              loop={false}
-              auto={false}
-              staggerDuration={0.005}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isTextInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
-              exit={{ opacity: 0, y: -50 }}
-              transition={{ type: "spring", duration: 0.6, bounce: 0 }}
-            />
+    <div ref={containerRef} className="relative h-[250vh] w-full">
+      <div className="sticky top-0 h-screen w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-24 px-6 sm:px-12 md:px-20 overflow-hidden">
+        
+        {/* Left: Interactive Image Preview */}
+        <div className="w-full md:w-1/2 flex items-center justify-center md:justify-end">
+          <div className="relative w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-96 lg:h-96 overflow-hidden rounded-2xl bg-white/[0.02] border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)]">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeIndex}
+                src={brandExamples[activeIndex].url}
+                alt={brandExamples[activeIndex].author}
+                initial={{ opacity: 0, scale: 0.92, filter: "blur(10px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
+                transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
+            </AnimatePresence>
           </div>
         </div>
-        <div className="absolute inset-0 overflow-auto snap-y snap-mandatory hide-scrollbar">
-          {brandExamples.map((brand, index) => (
-            <Item
-              key={index}
-              index={index}
-              image={brand.url}
-              link={brand.link}
-              onInView={(inView) => handleInView(index, inView)}
-            />
-          ))}
+
+        {/* Right: Brand Text Presentation */}
+        <div className="w-full md:w-1/2 flex flex-col items-center md:items-start justify-center text-center md:text-left">
+          <p className="eyebrow text-[0.62rem] md:text-xs uppercase tracking-[0.25em] text-muted-foreground mb-3 font-sans">
+            Brands We've Worked With
+          </p>
+          
+          <div className="h-[60px] sm:h-[80px] md:h-[100px] lg:h-[120px] relative flex items-center justify-center md:justify-start w-full">
+            <AnimatePresence mode="wait">
+              <motion.a
+                key={activeIndex}
+                href={brandExamples[activeIndex].link}
+                initial={{ y: 35, opacity: 0, filter: "blur(4px)" }}
+                animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+                exit={{ y: -35, opacity: 0, filter: "blur(4px)" }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-foreground font-bold tracking-tight absolute hover:text-muted-foreground transition-colors duration-300"
+              >
+                {brandExamples[activeIndex].author}
+              </motion.a>
+            </AnimatePresence>
+          </div>
         </div>
+
       </div>
     </div>
-  )
+  );
 }
+
