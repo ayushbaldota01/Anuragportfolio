@@ -68,7 +68,6 @@ const navLinks = [
   ["Works", "/"],
   ["About", "/about"],
   ["Vault", "/vault"],
-  ["Work with me", "/work-with-me"],
   ["Contact", "/contact"],
 ] as const;
 

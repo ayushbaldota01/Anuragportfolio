@@ -1,5 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, PageShell } from "../components/portfolio-chrome";
+import { motion } from "framer-motion";
 
 export const Route = createFileRoute("/contact")({
   head: () => ({
@@ -19,25 +20,36 @@ function Contact() {
         <div className="space-y-8">
           <div className="border-t border-border/30 pt-6">
             <span className="text-[0.68rem] uppercase tracking-[0.2em] text-muted-foreground block mb-2 font-sans">Email</span>
-            <a 
-              className="font-serif text-2xl sm:text-3xl md:text-4xl transition-colors hover:text-muted-foreground text-foreground block duration-300" 
-              href="mailto:cloxxmedia@gmail.com"
+            <motion.div
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
             >
-              cloxxmedia@gmail.com
-            </a>
+              <a 
+                className="font-sans font-light tracking-wide text-2xl sm:text-3xl md:text-4xl transition-colors hover:text-muted-foreground text-foreground block duration-300" 
+                href="mailto:cloxxmedia@gmail.com"
+              >
+                cloxxmedia@gmail.com
+              </a>
+            </motion.div>
           </div>
 
           <div className="border-t border-border/30 pt-6">
             <span className="text-[0.68rem] uppercase tracking-[0.2em] text-muted-foreground block mb-2 font-sans">Phone</span>
-            <div className="flex flex-col gap-2">
+            <motion.div 
+              className="flex flex-col gap-2"
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+            >
               <a 
-                className="font-serif text-xl sm:text-2xl transition-colors hover:text-muted-foreground text-foreground block duration-300" 
+                className="font-sans font-light tracking-wide text-xl sm:text-2xl transition-colors hover:text-muted-foreground text-foreground block duration-300" 
                 href="tel:+919867467671"
               >
                 +91 98674 67671
               </a>
               <a 
-                className="font-serif text-xl sm:text-2xl transition-colors hover:text-muted-foreground text-foreground block duration-300" 
+                className="font-sans font-light tracking-wide text-xl sm:text-2xl transition-colors hover:text-muted-foreground text-foreground block duration-300" 
                 href="tel:+917219044171"
               >
                 +91 72190 44171
@@ -55,7 +67,7 @@ function Contact() {
                   <span>Chat on WhatsApp</span>
                 </a>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           <div className="border-t border-border/30 pt-6">

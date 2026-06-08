@@ -28,9 +28,9 @@ function Index() {
     <PageShell noPadding>
       <div className="relative h-[100vh] w-full flex items-center justify-center overflow-hidden bg-transparent">
         <div className="relative z-10 w-full text-center pointer-events-none">
-          <h1 className="font-serif text-[clamp(4.5rem,12vw,9.5rem)] font-bold leading-none tracking-tighter text-white select-none">
+          <h1 className="font-serif text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-none tracking-tighter text-white select-none">
             <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white/95 to-white/50 drop-shadow-[0_4px_30px_rgba(255,255,255,0.15)]">
-              Cloxx Media
+              Where Creativity Meets Cinematic Storytelling
             </span>
           </h1>
         </div>
@@ -56,7 +56,7 @@ function Index() {
         </motion.div>
       </div>
 
-      <section className="page-container grid grid-cols-1 gap-x-3 gap-y-10 pb-4 md:grid-cols-2 md:gap-x-28 md:gap-y-24 md:pb-8">
+      <section className="page-container max-w-5xl mx-auto grid grid-cols-1 gap-x-8 gap-y-12 pb-4 md:grid-cols-2 md:gap-x-16 md:gap-y-16 md:pb-8">
         {works.map(([title, description, type, visual], index) => (
           <motion.article 
             className={`group ${index % 2 ? "md:mt-40" : ""}`} 
