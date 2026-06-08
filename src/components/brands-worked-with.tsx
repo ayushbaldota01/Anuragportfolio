@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
 
 const brandExamples = [
   {
@@ -38,33 +38,35 @@ export function BrandsWorkedWith() {
     offset: ["start start", "end end"],
   });
 
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    // Distribute 0 to 1 progress across 5 sections
+    const newIndex = Math.min(Math.floor(latest * 5), 4);
+    if (newIndex !== activeIndex) {
+      setActiveIndex(newIndex);
+    }
+  });
+
   return (
-    <div ref={containerRef} className="relative h-[300vh] w-full">
+    <div ref={containerRef} className="relative h-[250vh] w-full">
       <div className="sticky top-0 h-screen w-full flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-24 px-6 sm:px-12 md:px-20 overflow-hidden">
         
         {/* Left: Interactive Image Preview */}
         <div className="w-full md:w-1/2 flex items-center justify-center md:justify-end">
           <div className="relative w-48 h-48 sm:w-60 sm:h-60 md:w-72 md:h-72 lg:w-96 lg:h-96 overflow-hidden rounded-2xl bg-white/[0.02] border border-white/10 shadow-[0_25px_60px_-15px_rgba(0,0,0,0.8)]">
-            {brandExamples.map((brand, i) => {
-              // Calculate dynamic scroll ranges for each item (5 items total)
-              const start = (i - 0.5) / 4;
-              const center = i / 4;
-              const end = (i + 0.5) / 4;
-
-              const opacity = useTransform(scrollYProgress, [start, center, end], [0, 1, 0]);
-              const scale = useTransform(scrollYProgress, [start, center, end], [0.92, 1, 1.08]);
-              const blur = useTransform(scrollYProgress, [start, center, end], ["blur(10px)", "blur(0px)", "blur(10px)"]);
-
-              return (
-                <motion.img
-                  key={`img-${i}`}
-                  src={brand.url}
-                  alt={brand.author}
-                  style={{ opacity, scale, filter: blur }}
-                  className="absolute inset-0 w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
-                />
-              );
-            })}
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeIndex}
+                src={brandExamples[activeIndex].url}
+                alt={brandExamples[activeIndex].author}
+                initial={{ opacity: 0, scale: 0.92, filter: "blur(10px)" }}
+                animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+                exit={{ opacity: 0, scale: 1.05, filter: "blur(10px)" }}
+                transition={{ duration: 0.55, ease: [0.16, 1, 0.3, 1] }}
+                className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+              />
+            </AnimatePresence>
           </div>
         </div>
 
@@ -75,26 +77,19 @@ export function BrandsWorkedWith() {
           </p>
           
           <div className="h-[60px] sm:h-[80px] md:h-[100px] lg:h-[120px] relative flex items-center justify-center md:justify-start w-full">
-            {brandExamples.map((brand, i) => {
-              const start = (i - 0.5) / 4;
-              const center = i / 4;
-              const end = (i + 0.5) / 4;
-
-              const y = useTransform(scrollYProgress, [start, center, end], [40, 0, -40]);
-              const opacity = useTransform(scrollYProgress, [start, center, end], [0, 1, 0]);
-              const blur = useTransform(scrollYProgress, [start, center, end], ["blur(4px)", "blur(0px)", "blur(4px)"]);
-
-              return (
-                <motion.a
-                  key={`text-${i}`}
-                  href={brand.link}
-                  style={{ opacity, y, filter: blur }}
-                  className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-foreground font-bold tracking-tight absolute left-0 right-0 text-center md:text-left md:right-auto hover:text-muted-foreground transition-colors duration-300"
-                >
-                  {brand.author}
-                </motion.a>
-              );
-            })}
+            <AnimatePresence mode="wait">
+              <motion.a
+                key={activeIndex}
+                href={brandExamples[activeIndex].link}
+                initial={{ y: 35, opacity: 0, filter: "blur(4px)" }}
+                animate={{ y: 0, opacity: 1, filter: "blur(0px)" }}
+                exit={{ y: -35, opacity: 0, filter: "blur(4px)" }}
+                transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
+                className="font-serif text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl text-foreground font-bold tracking-tight absolute left-0 right-0 mx-auto text-center md:text-left md:mx-0 md:right-auto hover:text-muted-foreground transition-colors duration-300"
+              >
+                {brandExamples[activeIndex].author}
+              </motion.a>
+            </AnimatePresence>
           </div>
         </div>
 
