@@ -26,13 +26,36 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <PageShell noPadding>
-      <div className="relative h-[100vh] w-full flex items-center justify-center overflow-hidden bg-transparent">
-        <div className="relative z-10 w-full text-center pointer-events-none">
-          <h1 className="font-serif text-[clamp(2.5rem,6vw,5.5rem)] font-bold leading-none tracking-tighter text-white select-none">
-            <span className="bg-clip-text text-transparent bg-gradient-to-b from-white via-white/95 to-white/50 drop-shadow-[0_4px_30px_rgba(255,255,255,0.15)]">
-              Where Creativity Meets Cinematic Storytelling
+      <div className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-transparent">
+        <div className="relative z-10 w-full max-w-5xl mx-auto text-left pointer-events-none px-[5vw]">
+          <h1 className="font-sans text-[clamp(2.4rem,7vw,7rem)] font-black leading-[0.95] tracking-tight text-white select-none uppercase flex flex-col items-start justify-center drop-shadow-lg">
+            <span>WHERE</span>
+            <span 
+              className="bg-clip-text text-transparent drop-shadow-[0_2px_25px_rgba(158,127,255,0.2)] select-none"
+              style={{
+                backgroundImage: "linear-gradient(to right, #589cff 0%, #9e7fff 35%, #e07eff 70%, #ffd2e9 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent"
+              }}
+            >
+              CREATIVITY
+            </span>
+            <span>MEETS</span>
+            <span>CINEMATIC</span>
+            <span 
+              className="bg-clip-text text-transparent drop-shadow-[0_2px_25px_rgba(158,127,255,0.2)] select-none"
+              style={{
+                backgroundImage: "linear-gradient(to right, #ffd2e9 0%, #e07eff 30%, #9e7fff 65%, #589cff 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent"
+              }}
+            >
+              STORYTELLING
             </span>
           </h1>
+          <p className="mt-6 md:mt-8 font-sans text-[14px] md:text-[15px] font-normal leading-relaxed text-white/80 max-w-md px-1 sm:px-0">
+            Crafting visual experiences that inspire,<br className="hidden sm:inline" /> engage, and leave a lasting impact.
+          </p>
         </div>
         
         {/* Tender Scroll Indicator */}
@@ -56,31 +79,49 @@ function Index() {
         </motion.div>
       </div>
 
-      <section className="page-container max-w-5xl mx-auto grid grid-cols-1 gap-x-8 gap-y-12 pb-4 md:grid-cols-2 md:gap-x-16 md:gap-y-16 md:pb-8">
-        {works.map(([title, description, type, visual], index) => (
-          <motion.article 
-            className={`group ${index % 2 ? "md:mt-40" : ""}`} 
-            key={title}
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-10%" }}
-            transition={{ duration: 1.6, delay: (index % 2) * 0.3, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Link to="/" className="block">
-              <div className={`work-visual ${visual}`}>
-                <span className="view-pill">View work</span>
-                <span className="mock-title">{title}</span>
-              </div>
-              <div className="mt-3 md:mt-5 flex flex-col sm:flex-row justify-between gap-2 md:gap-5 border-t border-border pt-3 md:pt-4">
-                <div>
-                  <h2 className="font-serif text-lg font-semibold leading-tight md:text-3xl">{title}</h2>
-                  <p className="mt-1 md:mt-2 max-w-md text-[0.65rem] leading-4 text-muted-foreground md:text-base md:leading-6">{description}</p>
+      <section className="page-container max-w-[1569px] mx-auto grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 md:gap-x-12 lg:gap-x-20 xl:gap-x-[120px] md:gap-y-20 lg:gap-y-[100px] pb-8">
+        {works.map(([title, description, type, visual], index) => {
+          const isMirrorStyle = index % 2 === 0;
+          
+          return (
+            <motion.article 
+              className={`group ${index % 2 ? "md:mt-16 lg:mt-32 xl:mt-[200px]" : ""}`} 
+              key={title}
+              initial={{ opacity: 0, y: 60 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-10%" }}
+              transition={{ duration: 1.6, delay: (index % 2) * 0.3, ease: [0.16, 1, 0.3, 1] }}
+            >
+              <Link to="/" className="block">
+                <div className={`work-visual ${visual}`}>
+                  <span className="view-pill">View work</span>
+                  {/* Thumbnail Text (For Wonderland style) */}
+                  {!isMirrorStyle && (
+                    <span className="absolute inset-0 flex items-center justify-center font-serif text-[clamp(2rem,3.5vw,2.8rem)] leading-tight text-black z-10 uppercase text-center px-4 tracking-[0.02em]">
+                      {title}
+                    </span>
+                  )}
+                  {isMirrorStyle && (
+                    <span className="mock-title opacity-0 group-hover:opacity-100 transition-opacity duration-300">{title}</span>
+                  )}
                 </div>
-                <p className="eyebrow pt-1 md:pt-2 text-[0.55rem] md:text-[0.72rem] hidden sm:block">{type}</p>
-              </div>
-            </Link>
-          </motion.article>
-        ))}
+                {isMirrorStyle && (
+                  <div className="mt-4 md:mt-5 flex flex-col gap-3">
+                    <div>
+                      <h2 className="font-sans text-[13px] md:text-[14px] font-extrabold uppercase tracking-[0.08em] leading-tight text-foreground">{title}</h2>
+                      <p className="font-sans text-[12px] md:text-[13px] font-normal leading-relaxed text-muted-foreground mt-1 md:mt-1.5">{description}</p>
+                    </div>
+                    <div>
+                      <span className="inline-block border border-white/15 rounded-[2px] px-2.5 py-1 font-sans text-[9px] font-bold uppercase tracking-[0.18em] text-white/60">
+                        {type}
+                      </span>
+                    </div>
+                  </div>
+                )}
+              </Link>
+            </motion.article>
+          );
+        })}
       </section>
 
       <div className="mt-40 mb-20 md:mt-64 md:mb-40">

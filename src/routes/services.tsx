@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { PageHeader, PageShell } from "../components/portfolio-chrome";
+import { PageShell } from "../components/portfolio-chrome";
 import { motion } from "framer-motion";
 
 export const Route = createFileRoute("/services")({
@@ -14,28 +14,28 @@ export const Route = createFileRoute("/services")({
 
 const serviceList = [
   {
-    num: "01",
     title: "Cinematic Direction",
-    description: "Developing visual narratives that merge raw human emotion with high-fashion sensibilities. Translating brand identity into movement and atmosphere.",
-    details: ["Film & Video Direction", "Concept & Treatment Design", "Cinematography & Framing", "Creative Guidance"]
+    description: "Developing visual narratives that merge raw emotion with refined storytelling."
   },
   {
-    num: "02",
     title: "Editorial & Campaigns",
-    description: "Creating high-impact editorial imagery and large-scale visual campaigns that command attention and define brands.",
-    details: ["Creative Art Direction", "Editorial System Design", "Production Management", "Visual Strategy"]
+    description: "Creating high-impact editorial imagery and campaigns that define brands."
   },
   {
-    num: "03",
     title: "Color & Post-Production",
-    description: "Crafting distinct visual tones and film-grade color grading. Bringing a unified texture and mood to stills and moving images alike.",
-    details: ["Bespoke Color Styling", "Texture & Film Emulation", "Editing & Post Supervision", "VFX Supervision"]
+    description: "Crafting distinct visual tones through color grading, retouching and post-production."
   },
   {
-    num: "04",
     title: "Digital & Book Design",
-    description: "Designing physical publications, exhibition layouts, and curated digital experiences that preserve artistic intent.",
-    details: ["Printed Book Editorial", "Exhibition Space Curation", "UI/UX & Digital Galleries", "Typography & Layout"]
+    description: "Designing books, layouts and digital experiences that preserve artistic intent."
+  },
+  {
+    title: "Production Management",
+    description: "End-to-end production support to bring ideas to life seamlessly."
+  },
+  {
+    title: "Visual Strategy",
+    description: "Building visual systems and strategies that communicate with clarity and impact."
   }
 ];
 
@@ -52,62 +52,67 @@ function Services() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 1.0, ease: [0.16, 1, 0.3, 1] } }
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
   };
 
   return (
     <PageShell>
-      {/* Top section matching About page structure */}
-      <section className="grid gap-16 md:grid-cols-[1.1fr_.9fr] items-start">
-        <PageHeader eyebrow="Capabilities" title="Services" />
-        <div className="max-w-2xl space-y-7 text-lg leading-8 text-white/90">
-          <p>Moving between cinematic film, high-end photography, and editorial design.</p>
-          <p>Providing a unified, premium visual voice for forward-thinking brands and artists.</p>
+      {/* Top Header Section */}
+      <section className="grid gap-10 md:grid-cols-[1.2fr_.8fr] items-end pt-10 px-4 md:px-0 w-full">
+        <div>
+          <span className="font-sans text-[0.65rem] font-bold tracking-[0.2em] text-[#4ADE80] uppercase block mb-6">
+            Services
+          </span>
+          <h1 className="font-serif text-[clamp(2.5rem,5vw,4.5rem)] font-medium leading-[1.05] text-white max-w-2xl">
+            Crafting Visual<br />Stories That <i className="text-[#4ADE80] font-serif italic pr-2">Move.</i>
+          </h1>
+        </div>
+        <div className="flex flex-col items-start md:pb-2">
+          <p className="font-sans text-[13px] md:text-sm leading-relaxed text-white/70 max-w-md mb-8">
+            Merging cinematic film, high-end photography, and editorial design to deliver powerful visual experiences for brands and artists.
+          </p>
+          <div className="w-12 h-[2px] bg-[#4ADE80] opacity-80" />
         </div>
       </section>
 
-      {/* Bottom section matching About page card style but with services details */}
+      {/* Grid Section */}
       <motion.section 
         variants={containerVariants}
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-5%" }}
-        className="mt-28 grid grid-cols-1 gap-12 md:grid-cols-2 md:gap-x-16"
+        className="mt-20 md:mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-0"
       >
-        {serviceList.map((service, index) => (
-          <motion.div 
-            key={index}
-            variants={itemVariants}
-            className="py-6 transition-transform duration-300 hover:-translate-y-1.5 flex flex-col justify-between"
-          >
-            <div>
-              <div className="flex items-center gap-3 mb-4">
-                <span className="font-sans text-[0.62rem] tracking-[0.2em] text-white/70 uppercase">
-                  Service {service.num}
-                </span>
-                <div className="h-[1px] w-6 bg-border/20" />
-              </div>
-              <h2 className="font-serif text-3xl font-medium tracking-tight text-white">
-                {service.title}
-              </h2>
-              <p className="mt-3 text-sm leading-6 text-white/80 font-light">
-                {service.description}
-              </p>
-            </div>
-
-            {/* Subtle Pills for Details */}
-            <div className="mt-6 flex flex-wrap gap-2">
-              {service.details.map((detail, idx) => (
-                <span 
-                  key={idx} 
-                  className="font-sans text-[0.62rem] uppercase tracking-wider text-white/90 bg-white/10 border border-white/10 px-3 py-1 rounded-full transition-colors duration-300 hover:text-white hover:bg-white/15"
-                >
-                  {detail}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        ))}
+        {serviceList.map((service, index) => {
+          return (
+            <motion.div 
+              key={index}
+              variants={itemVariants}
+              className="relative"
+            >
+              <motion.div
+                animate={{ 
+                  y: [0, -8, 0], 
+                  rotate: [0, index % 2 === 0 ? 0.5 : -0.5, 0] 
+                }}
+                transition={{ 
+                  duration: 4 + (index % 3), 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: index * 0.2
+                }}
+                className="h-full bg-white/5 border border-white/10 rounded-xl p-8 flex flex-col justify-start hover:bg-white/10 transition-colors duration-300"
+              >
+                <h2 className="font-sans text-lg font-bold text-white mb-3">
+                  {service.title}
+                </h2>
+                <p className="font-sans text-[13px] leading-relaxed text-white/60 font-light">
+                  {service.description}
+                </p>
+              </motion.div>
+            </motion.div>
+          );
+        })}
       </motion.section>
     </PageShell>
   );

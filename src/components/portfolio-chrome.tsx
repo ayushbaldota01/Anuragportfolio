@@ -92,9 +92,10 @@ export function PortfolioNav() {
 
   return (
     <>
+      <div className="top-blur-overlay" aria-hidden="true" />
       <header className="portfolio-nav">
-        <Link to="/" className="font-serif text-lg font-semibold md:text-xl">
-          Anurag
+        <Link to="/" className="font-serif text-[18px] font-bold">
+          Cloxx Media
         </Link>
 
         {/* Desktop Nav */}
@@ -124,7 +125,9 @@ export function PortfolioNav() {
               <Link
                 key={to}
                 to={to}
-                className="text-4xl md:text-5xl font-serif font-medium tracking-tight text-foreground/80 hover:text-foreground transition-colors"
+                activeOptions={{ exact: true }}
+                activeProps={{ className: "text-[#4ADE80]!" }}
+                className="text-4xl md:text-5xl font-serif font-medium tracking-tight text-white/50 hover:text-white transition-colors"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {label}

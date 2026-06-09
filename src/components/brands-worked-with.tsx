@@ -24,11 +24,6 @@ const brandExamples = [
     author: "Apple",
     link: "#",
   },
-  {
-    url: "https://images.unsplash.com/photo-1556761175-5973dc0f32b7?q=80&w=2070&auto=format&fit=crop",
-    author: "LVMH",
-    link: "#",
-  },
 ];
 
 export function BrandsWorkedWith() {
@@ -37,6 +32,7 @@ export function BrandsWorkedWith() {
 
   const [activeIndex, setActiveIndex] = useState(0);
   const [isLocked, setIsLocked] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
 
   const isLockedRef = useRef(false);
   const lastUnlockedRef = useRef(0);
@@ -45,14 +41,23 @@ export function BrandsWorkedWith() {
   const autoplayTimerRef = useRef<ReturnType<typeof setInterval> | null>(null);
   const interactionTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 1024);
+    };
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
   // Track the scroll progress of the inner container, not the window
   const { scrollYProgress } = useScroll({
     container: containerRef,
   });
 
   useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    // 5 items mean 4 scroll intervals. So latest * 4 gives the index.
-    const newIndex = Math.min(Math.round(latest * 4), 4);
+    // 4 items mean 3 scroll intervals. So latest * 3 gives the index.
+    const newIndex = Math.min(Math.round(latest * 3), 3);
     if (newIndex !== activeIndex) {
       setActiveIndex(newIndex);
     }
@@ -103,7 +108,7 @@ export function BrandsWorkedWith() {
       const scrollTop = container.scrollTop;
 
       // Calculate current index and loop back to start if at the end
-      const currentIndex = Math.min(Math.round(scrollTop / clientHeight), 4);
+      const currentIndex = Math.min(Math.round(scrollTop / clientHeight), 3);
       const nextIndex = (currentIndex + 1) % brandExamples.length;
 
       container.scrollTo({
@@ -137,6 +142,7 @@ export function BrandsWorkedWith() {
   useEffect(() => {
     const handleWindowScroll = () => {
       if (isLockedRef.current) return;
+      if (isMobile) return; // Skip scroll lock on mobile/tablet
 
       const outer = outerRef.current;
       const container = containerRef.current;
@@ -168,10 +174,12 @@ export function BrandsWorkedWith() {
     return () => {
       window.removeEventListener("scroll", handleWindowScroll);
     };
-  }, []);
+  }, [isMobile]);
 
   // Event listeners on inner scroll container to handle boundary scrolling and pause autoplay
   useEffect(() => {
+    if (isMobile) return; // Skip nested scroll event handling on mobile
+
     const container = containerRef.current;
     if (!container) return;
 
@@ -229,11 +237,11 @@ export function BrandsWorkedWith() {
       container.removeEventListener("touchstart", handleTouchStart);
       container.removeEventListener("touchmove", handleTouchMove);
     };
-  }, []);
+  }, [isMobile]);
 
-  // Manage Autoplay life cycle based on locking state
+  // Manage Autoplay life cycle based on locking state or mobile mode
   useEffect(() => {
-    if (isLocked) {
+    if (isLocked || isMobile) {
       startAutoplay();
     } else {
       stopAutoplay();
@@ -247,7 +255,7 @@ export function BrandsWorkedWith() {
         clearTimeout(interactionTimeoutRef.current);
       }
     };
-  }, [isLocked]);
+  }, [isLocked, isMobile]);
 
   // Clean up global styles when component is unmounted
   useEffect(() => {
@@ -259,7 +267,7 @@ export function BrandsWorkedWith() {
   }, []);
 
   return (
-    <div ref={outerRef} className="h-screen w-full bg-transparent overflow-hidden relative">
+    <div ref={outerRef} className="h-[100dvh] w-full bg-transparent overflow-hidden relative">
       <style dangerouslySetInnerHTML={{__html: `
         .hide-scrollbar::-webkit-scrollbar {
           display: none !important;
@@ -271,11 +279,11 @@ export function BrandsWorkedWith() {
       `}} />
       <div 
         ref={containerRef}
-        className="absolute inset-0 w-full h-full overflow-y-auto snap-y snap-mandatory hide-scrollbar"
+        className={`absolute inset-0 w-full h-full snap-y snap-mandatory hide-scrollbar ${isMobile ? "overflow-y-hidden" : "overflow-y-auto"}`}
       >
-        <div className="w-full h-[500vh] relative">
+        <div className="w-full h-[400vh] relative">
           {/* Visual Presentation (Fixed within the scrollable container) */}
-          <div className="sticky top-0 w-full h-screen flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-24 px-6 sm:px-12 md:px-20 pointer-events-none">
+          <div className="sticky top-0 w-full h-[100dvh] flex flex-col md:flex-row items-center justify-center gap-8 md:gap-16 lg:gap-24 px-6 sm:px-12 md:px-20 pointer-events-none">
             
             {/* Left: Interactive Image Preview */}
             <div className="w-full md:w-1/2 flex items-center justify-center md:justify-end">
@@ -320,10 +328,9 @@ export function BrandsWorkedWith() {
 
           </div>
 
-          {/* Snap points to ensure exact stops at each brand */}
           <div className="absolute inset-0 w-full h-full pointer-events-none flex flex-col">
             {brandExamples.map((_, i) => (
-              <div key={i} className="w-full h-screen snap-center snap-always" />
+              <div key={i} className="w-full h-[100dvh] snap-center snap-always" />
             ))}
           </div>
         </div>
