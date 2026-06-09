@@ -63,14 +63,14 @@ const AURORA_THEMES: Record<string, AuroraTheme> = {
     base3: "oklch(0.20  0.14  60)",
   },
   "/services": {
-    // Services — luxurious gold-bronze
-    c1: "oklch(0.68 0.16 85 / 0.95)", x1: "78%", y1: "12%",
-    c2: "oklch(0.58 0.14 78 / 0.9)", x2: "82%", y2: "38%",
-    c3: "oklch(0.48 0.12 88 / 0.78)", x3: "66%", y3: "72%",
-    c4: "oklch(0.34 0.08 82 / 0.72)", x4: "10%", y4: "86%",
-    base1: "oklch(0.045 0.02 85)",
-    base2: "oklch(0.065 0.03 80)",
-    base3: "oklch(0.22  0.10 82)",
+    // Services — deep emerald & sage green
+    c1: "oklch(0.60 0.20 160 / 0.9)", x1: "78%", y1: "12%",
+    c2: "oklch(0.50 0.18 150 / 0.85)", x2: "82%", y2: "38%",
+    c3: "oklch(0.45 0.14 140 / 0.75)", x3: "66%", y3: "72%",
+    c4: "oklch(0.30 0.10 155 / 0.68)", x4: "10%", y4: "86%",
+    base1: "oklch(0.035 0.02 150)",
+    base2: "oklch(0.05  0.03 145)",
+    base3: "oklch(0.18  0.10 155)",
   },
 };
 

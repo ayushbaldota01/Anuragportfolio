@@ -60,7 +60,7 @@ function Services() {
       {/* Top section matching About page structure */}
       <section className="grid gap-16 md:grid-cols-[1.1fr_.9fr] items-start">
         <PageHeader eyebrow="Capabilities" title="Services" />
-        <div className="max-w-2xl space-y-7 text-lg leading-8 text-muted-foreground">
+        <div className="max-w-2xl space-y-7 text-lg leading-8 text-white/90">
           <p>Moving between cinematic film, high-end photography, and editorial design.</p>
           <p>Providing a unified, premium visual voice for forward-thinking brands and artists.</p>
         </div>
@@ -82,7 +82,7 @@ function Services() {
           >
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <span className="font-sans text-[0.62rem] tracking-[0.2em] text-muted-foreground/60 uppercase">
+                <span className="font-sans text-[0.62rem] tracking-[0.2em] text-white/70 uppercase">
                   Service {service.num}
                 </span>
                 <div className="h-[1px] w-6 bg-border/20" />
@@ -90,7 +90,7 @@ function Services() {
               <h2 className="font-serif text-3xl font-medium tracking-tight text-white">
                 {service.title}
               </h2>
-              <p className="mt-3 text-sm leading-6 text-muted-foreground font-light">
+              <p className="mt-3 text-sm leading-6 text-white/80 font-light">
                 {service.description}
               </p>
             </div>
@@ -100,7 +100,7 @@ function Services() {
               {service.details.map((detail, idx) => (
                 <span 
                   key={idx} 
-                  className="font-sans text-[0.62rem] uppercase tracking-wider text-muted-foreground/80 bg-white/5 border border-white/5 px-3 py-1 rounded-full transition-colors duration-300 hover:text-white"
+                  className="font-sans text-[0.62rem] uppercase tracking-wider text-white/90 bg-white/10 border border-white/10 px-3 py-1 rounded-full transition-colors duration-300 hover:text-white hover:bg-white/15"
                 >
                   {detail}
                 </span>
