@@ -222,6 +222,15 @@ export function OpeningCurtain({ onComplete }: { onComplete?: () => void }) {
     };
   }, []);
 
+  useEffect(() => {
+    if (phase === 'video' && videoRef.current) {
+      videoRef.current.play().catch(err => {
+        console.warn("Video autoplay blocked by browser. Transitioning page.", err);
+        handleVideoEnded();
+      });
+    }
+  }, [phase]);
+
   return (
     <AnimatePresence mode="wait">
       {phase !== 'ended' && (
@@ -279,7 +288,6 @@ export function OpeningCurtain({ onComplete }: { onComplete?: () => void }) {
                 onEnded={handleVideoEnded}
                 onError={handleVideoEnded}
                 onStalled={handleVideoEnded}
-                onSuspend={handleVideoEnded}
                 src="/intro.mp4"
               />
               {/* Vignette Overlay */}
