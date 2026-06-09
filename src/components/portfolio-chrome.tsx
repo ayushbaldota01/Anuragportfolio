@@ -62,10 +62,21 @@ const AURORA_THEMES: Record<string, AuroraTheme> = {
     base2: "oklch(0.06  0.05  58)",
     base3: "oklch(0.20  0.14  60)",
   },
+  "/services": {
+    // Services — luxurious gold-bronze
+    c1: "oklch(0.68 0.16 85 / 0.95)", x1: "78%", y1: "12%",
+    c2: "oklch(0.58 0.14 78 / 0.9)", x2: "82%", y2: "38%",
+    c3: "oklch(0.48 0.12 88 / 0.78)", x3: "66%", y3: "72%",
+    c4: "oklch(0.34 0.08 82 / 0.72)", x4: "10%", y4: "86%",
+    base1: "oklch(0.045 0.02 85)",
+    base2: "oklch(0.065 0.03 80)",
+    base3: "oklch(0.22  0.10 82)",
+  },
 };
 
 const navLinks = [
   ["Works", "/"],
+  ["Services", "/services"],
   ["About", "/about"],
   ["Vault", "/vault"],
   ["Contact", "/contact"],
