@@ -50,7 +50,7 @@ export function BrandsWorkedWith() {
   });
 
   return (
-    <div className="h-screen w-full bg-background overflow-hidden relative">
+    <div className="h-screen w-full bg-transparent overflow-hidden relative">
       <div 
         ref={containerRef}
         className="absolute inset-0 w-full h-full overflow-y-auto snap-y snap-mandatory hide-scrollbar"
