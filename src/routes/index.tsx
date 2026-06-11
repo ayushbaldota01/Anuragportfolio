@@ -1,6 +1,7 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "../components/portfolio-chrome";
 import { LogoMarquee } from "../components/ui/logo-marquee";
+import { FeaturedWork } from "../components/featured-work";
 import { motion } from "framer-motion";
 
 const works = [
@@ -123,6 +124,8 @@ function Index() {
           );
         })}
       </section>
+
+      <FeaturedWork />
 
       <LogoMarquee />
     </PageShell>
