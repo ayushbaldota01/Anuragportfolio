@@ -28,10 +28,10 @@ function Index() {
     <PageShell noPadding>
       <div className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-transparent">
         <div className="relative z-10 w-full max-w-5xl mx-auto text-left pointer-events-none px-[5vw]">
-          <h1 className="font-serif text-[clamp(2.4rem,7vw,7rem)] font-bold leading-[1.05] tracking-tight text-white select-none flex flex-col items-start justify-center drop-shadow-lg">
-            <span>Where Creativity Meets</span>
+          <h1 className="font-serif text-[clamp(1.5rem,5.5vw,5.8rem)] font-bold leading-[1.05] tracking-tight text-white select-none flex flex-col items-start justify-center drop-shadow-lg">
+            <span className="whitespace-nowrap">Where Creativity Meets</span>
             <span 
-              className="bg-clip-text text-transparent drop-shadow-[0_2px_25px_rgba(158,127,255,0.2)] select-none"
+              className="bg-clip-text text-transparent drop-shadow-[0_2px_25px_rgba(158,127,255,0.2)] select-none whitespace-nowrap"
               style={{
                 backgroundImage: "linear-gradient(to right, #589cff 0%, #9e7fff 35%, #e07eff 70%, #ffd2e9 100%)",
                 WebkitBackgroundClip: "text",
