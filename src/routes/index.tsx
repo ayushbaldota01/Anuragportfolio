@@ -1,6 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "../components/portfolio-chrome";
-import { BrandsWorkedWith } from "../components/brands-worked-with";
 import { LogoMarquee } from "../components/ui/logo-marquee";
 import { motion } from "framer-motion";
 
@@ -27,8 +26,8 @@ function Index() {
   return (
     <PageShell noPadding>
       <div className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-transparent">
-        <div className="relative z-10 w-full max-w-5xl mx-auto text-left pointer-events-none px-[5vw]">
-          <h1 className="font-serif text-[clamp(1.6rem,6vw,6.5rem)] font-bold leading-[1.05] tracking-tight text-white select-none flex flex-col items-start justify-center drop-shadow-lg">
+        <div className="relative z-10 w-full max-w-5xl mx-auto text-center pointer-events-none px-[5vw]">
+          <h1 className="font-serif text-[clamp(1.6rem,6vw,6.5rem)] font-bold leading-[1.05] tracking-tight text-white select-none flex flex-col items-center justify-center drop-shadow-lg">
             <span className="whitespace-nowrap">
               Where{" "}
               <span 
@@ -44,7 +43,17 @@ function Index() {
               Meets
             </span>
             <span className="whitespace-nowrap">
-              Cinematic Storytelling
+              Cinematic{" "}
+              <span 
+                className="bg-clip-text text-transparent drop-shadow-[0_2px_25px_rgba(158,127,255,0.2)] select-none"
+                style={{
+                  backgroundImage: "linear-gradient(to right, #589cff 0%, #9e7fff 35%, #e07eff 70%, #ffd2e9 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent"
+                }}
+              >
+                Storytelling
+              </span>
             </span>
           </h1>
         </div>
@@ -70,13 +79,13 @@ function Index() {
         </motion.div>
       </div>
 
-      <section className="page-container max-w-[1569px] mx-auto grid grid-cols-1 gap-x-6 gap-y-12 md:grid-cols-2 md:gap-x-12 lg:gap-x-20 xl:gap-x-[120px] md:gap-y-20 lg:gap-y-[100px] pb-8">
+      <section className="page-container max-w-[1569px] mx-auto grid grid-cols-1 gap-x-[29px] gap-y-12 md:grid-cols-2 md:gap-x-[58px] lg:gap-x-[96px] xl:gap-x-[144px] md:gap-y-20 lg:gap-y-[100px] pb-8">
         {works.map(([title, description, type, visual], index) => {
           const isMirrorStyle = index % 2 === 0;
           
           return (
             <motion.article 
-              className={`group ${index % 2 ? "md:mt-40 lg:mt-[160px] xl:mt-[200px]" : ""}`} 
+              className={`group w-[88%] mx-auto ${index % 2 ? "md:mt-40 lg:mt-[160px] xl:mt-[200px]" : ""}`} 
               key={title}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -115,10 +124,6 @@ function Index() {
         })}
       </section>
 
-      <div className="mt-40 mb-20 md:mt-64 md:mb-40">
-        <BrandsWorkedWith />
-      </div>
-      
       <LogoMarquee />
     </PageShell>
   );
