@@ -28,8 +28,8 @@ function Index() {
     <PageShell noPadding>
       <div className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-transparent">
         <div className="relative z-10 w-full max-w-5xl mx-auto text-left pointer-events-none px-[5vw]">
-          <h1 className="font-sans text-[clamp(2.4rem,7vw,7rem)] font-black leading-[0.95] tracking-tight text-white select-none uppercase flex flex-col items-start justify-center drop-shadow-lg">
-            <span>WHERE</span>
+          <h1 className="font-serif text-[clamp(2.4rem,7vw,7rem)] font-bold leading-[1.05] tracking-tight text-white select-none flex flex-col items-start justify-center drop-shadow-lg">
+            <span>Where Creativity Meets</span>
             <span 
               className="bg-clip-text text-transparent drop-shadow-[0_2px_25px_rgba(158,127,255,0.2)] select-none"
               style={{
@@ -38,24 +38,9 @@ function Index() {
                 WebkitTextFillColor: "transparent"
               }}
             >
-              CREATIVITY
-            </span>
-            <span>MEETS</span>
-            <span>CINEMATIC</span>
-            <span 
-              className="bg-clip-text text-transparent drop-shadow-[0_2px_25px_rgba(158,127,255,0.2)] select-none"
-              style={{
-                backgroundImage: "linear-gradient(to right, #ffd2e9 0%, #e07eff 30%, #9e7fff 65%, #589cff 100%)",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent"
-              }}
-            >
-              STORYTELLING
+              Cinematic Storytelling
             </span>
           </h1>
-          <p className="mt-6 md:mt-8 font-sans text-[14px] md:text-[15px] font-normal leading-relaxed text-white/80 max-w-md px-1 sm:px-0">
-            Crafting visual experiences that inspire,<br className="hidden sm:inline" /> engage, and leave a lasting impact.
-          </p>
         </div>
         
         {/* Tender Scroll Indicator */}
@@ -85,7 +70,7 @@ function Index() {
           
           return (
             <motion.article 
-              className={`group ${index % 2 ? "md:mt-16 lg:mt-32 xl:mt-[200px]" : ""}`} 
+              className={`group ${index % 2 ? "md:mt-40 lg:mt-[160px] xl:mt-[200px]" : ""}`} 
               key={title}
               initial={{ opacity: 0, y: 60 }}
               whileInView={{ opacity: 1, y: 0 }}

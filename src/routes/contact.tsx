@@ -26,7 +26,7 @@ function Contact() {
               transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
             >
               <a 
-                className="font-sans font-light tracking-wide text-2xl sm:text-3xl md:text-4xl transition-colors hover:text-muted-foreground text-foreground block duration-300" 
+                className="font-sans font-light tracking-wide text-lg sm:text-xl md:text-2xl transition-colors hover:text-muted-foreground text-foreground block duration-300" 
                 href="mailto:cloxxmedia@gmail.com"
               >
                 cloxxmedia@gmail.com
@@ -43,13 +43,13 @@ function Contact() {
               transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             >
               <a 
-                className="font-sans font-light tracking-wide text-xl sm:text-2xl transition-colors hover:text-muted-foreground text-foreground block duration-300" 
+                className="font-sans font-light tracking-wide text-base sm:text-lg transition-colors hover:text-muted-foreground text-foreground block duration-300" 
                 href="tel:+919867467671"
               >
                 +91 98674 67671
               </a>
               <a 
-                className="font-sans font-light tracking-wide text-xl sm:text-2xl transition-colors hover:text-muted-foreground text-foreground block duration-300" 
+                className="font-sans font-light tracking-wide text-base sm:text-lg transition-colors hover:text-muted-foreground text-foreground block duration-300" 
                 href="tel:+917219044171"
               >
                 +91 72190 44171
@@ -72,7 +72,7 @@ function Contact() {
 
           <div className="border-t border-border/30 pt-6">
             <span className="text-[0.68rem] uppercase tracking-[0.2em] text-muted-foreground block mb-2 font-sans">Address</span>
-            <p className="text-base sm:text-lg leading-relaxed text-muted-foreground max-w-md">
+            <p className="text-sm sm:text-base leading-relaxed text-muted-foreground max-w-md">
               Shree Swami Samarth Nagar,<br />
               Lokhandwala complex, Andheri West,<br />
               Mumbai 400053
