@@ -3,6 +3,7 @@ import { PageShell } from "../components/portfolio-chrome";
 import { LogoMarquee } from "../components/ui/logo-marquee";
 import { FeaturedWork } from "../components/featured-work";
 import { motion } from "framer-motion";
+import { TypewriterHeading, HeroTypewriterHeading } from "../components/ui/typewriter-heading";
 
 const works = [
   ["The Mirror™", "A guide to seeing your brand, and yourself, clearly.", "Book", "work-visual-a"],
@@ -28,35 +29,7 @@ function Index() {
     <PageShell noPadding>
       <div className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-transparent">
         <div className="relative z-10 w-full max-w-5xl mx-auto text-center pointer-events-none px-[5vw]">
-          <h1 className="font-serif text-[clamp(1.6rem,6vw,6.5rem)] font-bold leading-[1.05] tracking-tight text-white select-none flex flex-col items-center justify-center drop-shadow-lg">
-            <span className="whitespace-nowrap">
-              Where{" "}
-              <span 
-                className="bg-clip-text text-transparent drop-shadow-[0_2px_25px_rgba(158,127,255,0.2)] select-none"
-                style={{
-                  backgroundImage: "linear-gradient(to right, #589cff 0%, #9e7fff 35%, #e07eff 70%, #ffd2e9 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent"
-                }}
-              >
-                Creativity
-              </span>{" "}
-              Meets
-            </span>
-            <span className="whitespace-nowrap">
-              Cinematic{" "}
-              <span 
-                className="bg-clip-text text-transparent drop-shadow-[0_2px_25px_rgba(158,127,255,0.2)] select-none"
-                style={{
-                  backgroundImage: "linear-gradient(to right, #589cff 0%, #9e7fff 35%, #e07eff 70%, #ffd2e9 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent"
-                }}
-              >
-                Storytelling
-              </span>
-            </span>
-          </h1>
+          <HeroTypewriterHeading />
         </div>
         
         {/* Tender Scroll Indicator */}
@@ -109,7 +82,7 @@ function Index() {
                 {isMirrorStyle && (
                   <div className="mt-4 md:mt-5 flex flex-col gap-3">
                     <div>
-                      <h2 className="font-sans text-[13px] md:text-[14px] font-extrabold uppercase tracking-[0.08em] leading-tight text-foreground">{title}</h2>
+                      <TypewriterHeading as="h2" text={title} className="font-sans text-[13px] md:text-[14px] font-extrabold uppercase tracking-[0.08em] leading-tight text-foreground" />
                       <p className="font-sans text-[12px] md:text-[13px] font-normal leading-relaxed text-muted-foreground mt-1 md:mt-1.5">{description}</p>
                     </div>
                     <div>
