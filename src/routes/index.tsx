@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "../components/portfolio-chrome";
 import { LogoMarquee } from "../components/ui/logo-marquee";
 import { FeaturedWork } from "../components/featured-work";
+import { HeroDoorway } from "../components/hero-doorway";
 import { motion } from "framer-motion";
 
 export const Route = createFileRoute("/")({
@@ -17,7 +18,9 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <PageShell noPadding>
-      <div className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-transparent">
+      <div className="relative min-h-[100dvh] w-full flex items-center justify-center overflow-hidden bg-[#050014]">
+        {/* 3D Doorway Background */}
+        <HeroDoorway />
         <div className="relative z-10 w-full max-w-5xl mx-auto text-center pointer-events-none px-[5vw]">
           <motion.h1 
             initial="hidden"
