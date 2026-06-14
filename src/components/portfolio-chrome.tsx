@@ -33,14 +33,14 @@ const AURORA_THEMES: Record<string, AuroraTheme> = {
     base3: "oklch(0.22  0.2  308)",
   },
   "/about": {
-    // About — deep ocean blue
-    c1: "oklch(0.50 0.32 252 / 0.95)", x1: "80%", y1: "12%",
-    c2: "oklch(0.45 0.28 240 / 0.9)", x2: "78%", y2: "45%",
-    c3: "oklch(0.42 0.22 258 / 0.78)", x3: "68%", y3: "78%",
-    c4: "oklch(0.30 0.18 248 / 0.7)", x4: "8%", y4: "85%",
-    base1: "oklch(0.03  0.03 250)",
-    base2: "oklch(0.05  0.05 245)",
-    base3: "oklch(0.18  0.16 252)",
+    // About — dark gold / bronze (high contrast)
+    c1: "oklch(0.55 0.22  45 / 0.85)", x1: "80%", y1: "12%",
+    c2: "oklch(0.50 0.20  40 / 0.80)", x2: "78%", y2: "45%",
+    c3: "oklch(0.40 0.18  35 / 0.70)", x3: "68%", y3: "78%",
+    c4: "oklch(0.28 0.12  30 / 0.65)", x4: "8%", y4: "85%",
+    base1: "oklch(0.03  0.02  40)",
+    base2: "oklch(0.05  0.04  35)",
+    base3: "oklch(0.15  0.10  42)",
   },
   "/work-with-me": {
     // Work with me — teal-emerald
@@ -71,6 +71,16 @@ const AURORA_THEMES: Record<string, AuroraTheme> = {
     base1: "oklch(0.035 0.02 150)",
     base2: "oklch(0.05  0.03 145)",
     base3: "oklch(0.18  0.10 155)",
+  },
+  "/vault": {
+    // Vault - pure black background
+    c1: "transparent", x1: "0%", y1: "0%",
+    c2: "transparent", x2: "0%", y2: "0%",
+    c3: "transparent", x3: "0%", y3: "0%",
+    c4: "transparent", x4: "0%", y4: "0%",
+    base1: "oklch(0 0 0)",
+    base2: "oklch(0 0 0)",
+    base3: "oklch(0 0 0)",
   },
 };
 

@@ -1,18 +1,8 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "../components/portfolio-chrome";
 import { LogoMarquee } from "../components/ui/logo-marquee";
 import { FeaturedWork } from "../components/featured-work";
 import { motion } from "framer-motion";
-import { TypewriterHeading } from "../components/ui/typewriter-heading";
-
-const works = [
-  ["The Mirror™", "A guide to seeing your brand, and yourself, clearly.", "Book", "work-visual-a"],
-  ["Wonderland", "A journey into light, colour and truth.", "Album", "work-visual-b"],
-  ["Pots & Pithoi", "A world of earthy elegance and quiet prestige.", "Direction", "work-visual-c"],
-  ["The Art of Becoming", "A space for thoughtful conversations.", "Podcast", "work-visual-d"],
-  ["Lucy Nolan", "Where virtuosity meets visual presence.", "Direction", "work-visual-e"],
-  ["Presence", "A quiet moment of clarity.", "Film", "work-visual-f"],
-];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -106,51 +96,6 @@ function Index() {
           </div>
         </motion.div>
       </div>
-
-      <section className="page-container max-w-[1569px] mx-auto grid grid-cols-1 gap-x-[29px] gap-y-12 md:grid-cols-2 md:gap-x-[58px] lg:gap-x-[96px] xl:gap-x-[144px] md:gap-y-20 lg:gap-y-[100px] pb-8">
-        {works.map(([title, description, type, visual], index) => {
-          const isMirrorStyle = index % 2 === 0;
-          
-          return (
-            <motion.article 
-              className={`group w-[88%] mx-auto ${index % 2 ? "md:mt-40 lg:mt-[160px] xl:mt-[200px]" : ""}`} 
-              key={title}
-              initial={{ opacity: 0, y: 60 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-10%" }}
-              transition={{ duration: 1.6, delay: (index % 2) * 0.3, ease: [0.16, 1, 0.3, 1] }}
-            >
-              <Link to="/" className="block">
-                <div className={`work-visual ${visual}`}>
-                  <span className="view-pill">View work</span>
-                  {/* Thumbnail Text (For Wonderland style) */}
-                  {!isMirrorStyle && (
-                    <span className="absolute inset-0 flex items-center justify-center font-serif text-[clamp(2rem,3.5vw,2.8rem)] leading-tight text-black z-10 uppercase text-center px-4 tracking-[0.02em]">
-                      {title}
-                    </span>
-                  )}
-                  {isMirrorStyle && (
-                    <span className="mock-title opacity-0 group-hover:opacity-100 transition-opacity duration-300">{title}</span>
-                  )}
-                </div>
-                {isMirrorStyle && (
-                  <div className="mt-4 md:mt-5 flex flex-col gap-3">
-                    <div>
-                      <TypewriterHeading as="h2" text={title} className="font-sans text-[13px] md:text-[14px] font-extrabold uppercase tracking-[0.08em] leading-tight text-foreground" />
-                      <p className="font-sans text-[12px] md:text-[13px] font-normal leading-relaxed text-muted-foreground mt-1 md:mt-1.5">{description}</p>
-                    </div>
-                    <div>
-                      <span className="inline-block border border-white/15 rounded-[2px] px-2.5 py-1 font-sans text-[9px] font-bold uppercase tracking-[0.18em] text-white/60">
-                        {type}
-                      </span>
-                    </div>
-                  </div>
-                )}
-              </Link>
-            </motion.article>
-          );
-        })}
-      </section>
 
       <FeaturedWork />
 

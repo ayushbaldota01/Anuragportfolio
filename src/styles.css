@@ -204,6 +204,19 @@
     mask-image: linear-gradient(to bottom, black 20%, transparent 100%);
   }
 
+  .bottom-blur-overlay {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 8rem;
+    z-index: 30;
+    pointer-events: none;
+    backdrop-filter: blur(12px);
+    -webkit-mask-image: linear-gradient(to top, black 0%, transparent 100%);
+    mask-image: linear-gradient(to top, black 0%, transparent 100%);
+  }
+
   .portfolio-nav { 
     position: fixed; 
     left: 50%; 

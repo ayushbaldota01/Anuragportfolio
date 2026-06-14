@@ -104,6 +104,18 @@ function RootComponent() {
       </motion.div>
 
       <motion.div
+        className="fixed bottom-0 left-0 w-full z-50 pointer-events-none"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ 
+          opacity: introDone ? 1 : 0, 
+          y: introDone ? 0 : 20
+        }}
+        transition={{ duration: 1.2, delay: 1.2, ease }}
+      >
+        <div className="bottom-blur-overlay" aria-hidden="true" />
+      </motion.div>
+
+      <motion.div
         initial="hidden"
         animate={introDone ? "visible" : "hidden"}
         variants={{
@@ -118,6 +130,7 @@ function RootComponent() {
       </motion.div>
 
       <motion.div
+        className="relative z-[60]"
         initial={{ opacity: 0, y: 20, filter: "blur(10px)" }}
         animate={{ 
           opacity: introDone ? 1 : 0,

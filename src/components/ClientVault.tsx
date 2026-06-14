@@ -23,7 +23,7 @@ export function ClientVault() {
   };
 
   return (
-    <div className="w-[calc(100%-2rem)] max-w-md mx-auto rounded-2xl border border-white/10 bg-black/40 backdrop-blur-xl p-6 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden mt-4 md:mt-0">
+    <div className="w-[calc(100%-2rem)] max-w-md mx-auto rounded-2xl border border-white/10 bg-black/85 backdrop-blur-2xl p-6 sm:p-8 md:p-12 shadow-2xl relative overflow-hidden mt-4 md:mt-0">
       {/* Subtle gold glow effects */}
       <div className="absolute -top-24 -left-24 md:-top-32 md:-left-32 w-48 h-48 md:w-64 md:h-64 bg-[#D4AF37]/10 rounded-full blur-[60px] md:blur-[80px] pointer-events-none" />
       <div className="absolute -bottom-24 -right-24 md:-bottom-32 md:-right-32 w-48 h-48 md:w-64 md:h-64 bg-[#D4AF37]/10 rounded-full blur-[60px] md:blur-[80px] pointer-events-none" />
