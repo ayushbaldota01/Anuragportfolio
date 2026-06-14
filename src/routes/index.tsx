@@ -62,14 +62,7 @@ function Index() {
               className="whitespace-nowrap"
             >
               Cinematic{" "}
-              <span 
-                className="bg-clip-text text-transparent drop-shadow-[0_2px_25px_rgba(158,127,255,0.2)] select-none"
-                style={{
-                  backgroundImage: "linear-gradient(to right, #589cff 0%, #9e7fff 35%, #e07eff 70%, #ffd2e9 100%)",
-                  WebkitBackgroundClip: "text",
-                  WebkitTextFillColor: "transparent"
-                }}
-              >
+              <span className="select-none">
                 Storytelling
               </span>
             </motion.span>

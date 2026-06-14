@@ -2,48 +2,33 @@ import React, { useRef, useState } from "react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 
 export function TypewriterHeading({ text, className, as: Component = "h2" }: { text: string, className?: string, as?: any }) {
-  const containerRef = useRef<HTMLElement>(null);
-  const [visibleCount, setVisibleCount] = useState(0);
-
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start 90%", "center center"]
-  });
-
   const chars = text.split("");
 
-  useMotionValueEvent(scrollYProgress, "change", (latest) => {
-    setVisibleCount(Math.max(0, Math.ceil(latest * chars.length)));
-  });
-
   return (
-    <Component ref={containerRef} className={className}>
-      {chars.map((char, idx) => {
-        const isVisible = idx < visibleCount;
-        const isCaretPosition = idx === visibleCount - 1;
-        return (
-          <React.Fragment key={idx}>
-            <motion.span
-              initial={{ opacity: 0, y: 3 }}
-              animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 3 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}
-              className="inline-block whitespace-pre"
-            >
-              {char}
-            </motion.span>
-            {isCaretPosition && (
-              <motion.span
-                initial={{ opacity: 1 }}
-                animate={{ opacity: [1, 0, 1] }}
-                transition={{ duration: 0.8, repeat: Infinity, ease: "easeInOut" }}
-                className="inline-block text-white font-thin relative -ml-[0.05em] w-0 overflow-visible"
-              >
-                |
-              </motion.span>
-            )}
-          </React.Fragment>
-        );
-      })}
+    <Component className={className}>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-10%" }}
+        variants={{
+          visible: { transition: { staggerChildren: 0.03 } },
+          hidden: {}
+        }}
+        className="inline-flex flex-wrap items-center justify-center"
+      >
+        {chars.map((char, idx) => (
+          <motion.span
+            key={idx}
+            variants={{
+              hidden: { opacity: 0, y: 10 },
+              visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.16, 1, 0.3, 1] } }
+            }}
+            className="inline-block whitespace-pre"
+          >
+            {char}
+          </motion.span>
+        ))}
+      </motion.div>
     </Component>
   );
 }
