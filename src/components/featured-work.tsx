@@ -187,7 +187,7 @@ export function FeaturedWork() {
           </h1>
         </motion.header>
 
-        <main className="grid grid-cols-1 gap-3 md:gap-4 md:grid-cols-2 lg:grid-cols-12" aria-label="Featured work portfolio grid">
+        <main className="grid grid-cols-1 gap-8 md:gap-4 md:grid-cols-2 lg:grid-cols-12" aria-label="Featured work portfolio grid">
           {projects.map((project, index) => (
             <motion.a
               key={project.id}
@@ -197,7 +197,7 @@ export function FeaturedWork() {
               custom={index % 3}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true, margin: "-10%" }}
+              viewport={{ once: true, amount: 0.05 }}
               variants={itemVariants}
             >
               <div className="mb-4 flex items-center gap-3 text-[14px] font-medium uppercase tracking-tight text-white/60">
@@ -207,7 +207,7 @@ export function FeaturedWork() {
                 {project.images.map((imgSrc, imgIndex) => (
                   <div key={imgIndex} className="relative w-full transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:-translate-y-2">
                     {/* Ambilight Background Glow */}
-                    <div className="absolute inset-0 z-0 pointer-events-none overflow-visible">
+                    <div className="absolute inset-0 z-0 pointer-events-none overflow-visible hidden md:block">
                       <img 
                         src={imgSrc} 
                         alt="" 
@@ -222,16 +222,22 @@ export function FeaturedWork() {
                         alt={`${project.title} project preview`} 
                         className={`${project.height} w-full object-cover transition duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:scale-[1.04]`} 
                       />
+                      
+                      {/* Gradient overlay to ensure text readability */}
+                      {(project.overlayText || project.overlayTextBottom) && imgIndex === 0 && (
+                        <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-black/40" />
+                      )}
+
                       {project.overlayText && imgIndex === 0 && (
                         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-                          <span className="px-6 text-center text-sm font-medium uppercase tracking-[0.18em] text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)]">
+                          <span className="px-6 text-center text-[15px] md:text-sm font-medium uppercase tracking-[0.18em] text-white drop-shadow-md">
                             {project.overlayText}
                           </span>
                         </div>
                       )}
                       {project.overlayTextBottom && imgIndex === 0 && (
-                        <div className="pointer-events-none absolute inset-x-0 bottom-8 flex justify-center px-6">
-                          <span className="text-center font-serif text-[20px] leading-tight text-white drop-shadow-[0_2px_10px_rgba(0,0,0,0.6)] sm:text-[24px]">
+                        <div className="pointer-events-none absolute inset-x-0 bottom-6 md:bottom-8 flex justify-center px-4 md:px-6">
+                          <span className="text-center font-serif text-[22px] md:text-[24px] leading-tight text-white drop-shadow-md">
                             {project.overlayTextBottom}
                           </span>
                         </div>
