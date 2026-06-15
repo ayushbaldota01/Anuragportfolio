@@ -102,8 +102,19 @@ export function PortfolioNav() {
 
   return (
     <>
-      <div className="top-blur-overlay" aria-hidden="true" />
-      <header className="portfolio-nav">
+      <motion.div 
+        className="top-blur-overlay" 
+        aria-hidden="true" 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 2.8, duration: 1.5, ease: "easeOut" }}
+      />
+      <motion.header 
+        className="portfolio-nav"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 2.8, duration: 1.5, ease: [0.16, 1, 0.3, 1] }}
+      >
         <Link to="/" className="font-serif text-[18px] font-bold">
           Cloxx Media
         </Link>
@@ -125,7 +136,7 @@ export function PortfolioNav() {
         >
           <span className="text-[0.62rem] tracking-[0.2em]">{isMenuOpen ? "CLOSE" : "MENU"}</span>
         </button>
-      </header>
+      </motion.header>
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (

@@ -14,30 +14,55 @@ export const Route = createFileRoute("/services")({
 
 const serviceList = [
   {
-    title: "Cinematic Direction",
-    description: "Developing visual narratives that merge raw emotion with refined storytelling."
+    title: "VIDEOGRAPHY",
+    description: "Creating films that people remember, not just videos they watch."
   },
   {
-    title: "Editorial & Campaigns",
-    description: "Creating high-impact editorial imagery and campaigns that define brands."
+    title: "PHOTOGRAPHY",
+    description: "Images that add value to every brand and story."
   },
   {
-    title: "Color & Post-Production",
-    description: "Crafting distinct visual tones through color grading, retouching and post-production."
+    title: "BRAND CAMPAIGNS",
+    description: "Built around ideas that leave a lasting impact."
   },
   {
-    title: "Digital & Book Design",
-    description: "Designing books, layouts and digital experiences that preserve artistic intent."
+    title: "SOCIAL MEDIA CONTENT",
+    description: "Made to grab attention and drive engagement."
   },
   {
-    title: "Production Management",
-    description: "End-to-end production support to bring ideas to life seamlessly."
+    title: "COMMERCIAL PRODUCTION",
+    description: "Premium visuals designed for modern businesses."
   },
   {
-    title: "Visual Strategy",
-    description: "Building visual systems and strategies that communicate with clarity and impact."
+    title: "CREATIVE DIRECTION",
+    description: "Bringing clarity and purpose to every creative decision."
+  },
+  {
+    title: "EDITING & POST PRODUCTION",
+    description: "Where raw footage becomes something worth revisiting."
+  },
+  {
+    title: "EVENT COVERAGE",
+    description: "Capturing experiences beyond the moment itself."
+  },
+  {
+    title: "DRONE CINEMATOGRAPHY",
+    description: "A fresh perspective changes everything."
+  },
+  {
+    title: "FASHION & LIFESTYLE",
+    description: "Visuals that feel as premium as the brand."
+  },
+  {
+    title: "FOOD & HOSPITALITY",
+    description: "Content that makes people want to experience more."
+  },
+  {
+    title: "INTERIORS & ARCHITECTURE",
+    description: "Showcasing spaces with depth and character."
   }
 ];
+
 
 function Services() {
   const containerVariants = {
@@ -52,23 +77,23 @@ function Services() {
 
   const itemVariants = {
     hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] } }
+    show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const } }
   };
 
   return (
     <PageShell>
       {/* Top Header Section */}
-      <section className="grid gap-10 md:grid-cols-[1.2fr_.8fr] items-end pt-10 px-4 md:px-0 w-full">
+      <section className="grid gap-10 md:grid-cols-[1.2fr_.8fr] items-end pt-10 px-6 md:px-12 lg:px-16 w-full">
         <div>
           <span className="font-sans text-[0.65rem] font-bold tracking-[0.2em] text-[#4ADE80] uppercase block mb-6">
             Services
           </span>
-          <h1 className="font-serif text-[clamp(2.5rem,5vw,4.5rem)] font-medium leading-[1.05] text-white max-w-2xl">
+          <h1 className="font-serif text-[clamp(3.2rem,6vw,5.5rem)] font-medium leading-[1.02] text-white max-w-3xl">
             Crafting Visual<br />Stories That <i className="text-[#4ADE80] font-serif italic pr-2">Move.</i>
           </h1>
         </div>
         <div className="flex flex-col items-start md:pb-2">
-          <p className="font-sans text-[13px] md:text-sm leading-relaxed text-white/70 max-w-md mb-8">
+          <p className="font-sans text-[12px] md:text-[13px] leading-relaxed text-white/60 max-w-sm mb-8">
             Merging cinematic film, high-end photography, and editorial design to deliver powerful visual experiences for brands and artists.
           </p>
           <div className="w-12 h-[2px] bg-[#4ADE80] opacity-80" />
@@ -81,7 +106,7 @@ function Services() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-5%" }}
-        className="mt-20 md:mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-4 md:px-0"
+        className="mt-20 md:mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6 md:px-12 lg:px-16"
       >
         {serviceList.map((service, index) => {
           return (

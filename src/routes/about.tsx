@@ -42,7 +42,7 @@ function About() {
       <section className="flex flex-col items-center text-center mt-12 md:mt-20">
         <h1 className="font-serif text-6xl md:text-8xl tracking-tight mb-8">About Us</h1>
         <div className="max-w-2xl space-y-7 text-lg leading-8 text-muted-foreground">
-          <p>We are a subscription-based web design agency, delivering high-quality, scalable websites designed to drive results and grow your business.</p>
+          <p>CLOXX MEDIA is a creative production studio specializing in cinematic videography, photography, and visual storytelling.</p>
         </div>
       </section>
 
@@ -56,11 +56,11 @@ function About() {
         </div>
         <div className="pl-0 md:pl-8 lg:pl-16">
           <h2 className="font-serif text-5xl md:text-6xl mb-8 leading-[1.1]">
-            We help business <span className="text-white/40 block mt-2">grow online</span>
+            We craft stories <span className="text-white/40 block mt-2">through visuals</span>
           </h2>
           <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-            <p>Our mission is to provide businesses with dedicated, scalable design teams that build high-converting websites, all through a simple subscription model.</p>
-            <p>We strive for continuous innovation and exceptional quality in every project we complete.</p>
+            <p>Founded by Anurag Patil, Cloxx Media combines creativity with technical excellence to deliver high quality visuals across fashion, lifestyle, hospitality, interiors, food, events, and commercial campaigns.</p>
+            <p>Every project is approached with a strong focus on storytelling, aesthetics, and brand identity.</p>
           </div>
         </div>
       </section>
@@ -69,21 +69,21 @@ function About() {
       <section className="mt-32 grid grid-cols-1 gap-6 md:grid-cols-3">
         <div className="py-12 px-6 bg-white/5 border border-white/10 rounded-3xl text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/10">
           <h3 className="font-serif text-5xl md:text-6xl mb-4 text-white">
-            <RollingNumber value={500} />+
+            <RollingNumber value={100} />+
           </h3>
           <p className="text-sm tracking-widest uppercase text-muted-foreground">Projects delivered</p>
         </div>
         <div className="py-12 px-6 bg-white/5 border border-white/10 rounded-3xl text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/10">
           <h3 className="font-serif text-5xl md:text-6xl mb-4 text-white">
-            <RollingNumber value={99} />%
+            <RollingNumber value={50} />+
           </h3>
-          <p className="text-sm tracking-widest uppercase text-muted-foreground">Customer satisfaction</p>
+          <p className="text-sm tracking-widest uppercase text-muted-foreground">Brands Collaborated</p>
         </div>
         <div className="py-12 px-6 bg-white/5 border border-white/10 rounded-3xl text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/10">
           <h3 className="font-serif text-5xl md:text-6xl mb-4 text-white">
-            <RollingNumber value={24} />/7
+            <RollingNumber value={5} />+
           </h3>
-          <p className="text-sm tracking-widest uppercase text-muted-foreground">Support availability</p>
+          <p className="text-sm tracking-widest uppercase text-muted-foreground">Years of Creative Experience</p>
         </div>
       </section>
 
@@ -99,31 +99,7 @@ function About() {
         </div>
       </section>
 
-      {/* Meet the Team Section */}
-      <section className="mt-32">
-        <div className="text-center mb-16">
-          <h2 className="font-serif text-4xl md:text-5xl mb-6">Meet the team</h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">Our talented team of designers and developers are dedicated to bringing your vision to life.</p>
-        </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-x-8 gap-y-12">
-          {[
-            { name: "John Smith", role: "Lead Designer" },
-            { name: "James Turner", role: "Senior Web Developer" },
-            { name: "Michael Johnson", role: "Project Manager" },
-            { name: "David Miller", role: "UI/UX Specialist" },
-            { name: "Robert White", role: "Front-End Developer" },
-            { name: "William Harris", role: "Design Strategist" }
-          ].map((member, i) => (
-            <div key={i} className="group cursor-pointer">
-              <div className="aspect-[4/5] bg-white/5 border border-white/10 rounded-3xl mb-6 transition-all duration-500 group-hover:bg-white/10 group-hover:-translate-y-2 overflow-hidden relative">
-                <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              </div>
-              <h3 className="font-serif text-2xl mb-1 text-white">{member.name}</h3>
-              <p className="text-muted-foreground">{member.role}</p>
-            </div>
-          ))}
-        </div>
-      </section>
+
     </PageShell>
   );
 }
