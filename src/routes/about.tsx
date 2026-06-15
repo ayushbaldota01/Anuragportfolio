@@ -13,27 +13,8 @@ export const Route = createFileRoute("/about")({
   component: About,
 });
 
-function RollingNumber({ value }: { value: number }) {
-  const ref = useRef<HTMLSpanElement>(null);
-  const isInView = useInView(ref, { once: true, margin: "-50px" });
+import { MechanicalOdometerCounter } from "../components/ui/odometer-counter";
 
-  useEffect(() => {
-    if (isInView) {
-      const controls = animate(0, value, {
-        duration: 2.5,
-        ease: "easeOut",
-        onUpdate(v) {
-          if (ref.current) {
-            ref.current.textContent = Math.round(v).toString();
-          }
-        }
-      });
-      return () => controls.stop();
-    }
-  }, [isInView, value]);
-
-  return <span ref={ref}>0</span>;
-}
 
 function About() {
   return (
@@ -68,20 +49,20 @@ function About() {
       {/* Stats Section with Rolling Numbers */}
       <section className="mt-32 grid grid-cols-1 gap-6 md:grid-cols-3">
         <div className="py-12 px-6 bg-white/5 border border-white/10 rounded-3xl text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/10">
-          <h3 className="font-serif text-5xl md:text-6xl mb-4 text-white">
-            <RollingNumber value={100} />+
+          <h3 className="font-serif text-5xl md:text-6xl mb-4 text-white flex justify-center items-center">
+            <MechanicalOdometerCounter to={100} fontSize={60} />+
           </h3>
           <p className="text-sm tracking-widest uppercase text-muted-foreground">Projects delivered</p>
         </div>
         <div className="py-12 px-6 bg-white/5 border border-white/10 rounded-3xl text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/10">
-          <h3 className="font-serif text-5xl md:text-6xl mb-4 text-white">
-            <RollingNumber value={50} />+
+          <h3 className="font-serif text-5xl md:text-6xl mb-4 text-white flex justify-center items-center">
+            <MechanicalOdometerCounter to={50} fontSize={60} />+
           </h3>
           <p className="text-sm tracking-widest uppercase text-muted-foreground">Brands Collaborated</p>
         </div>
         <div className="py-12 px-6 bg-white/5 border border-white/10 rounded-3xl text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/10">
-          <h3 className="font-serif text-5xl md:text-6xl mb-4 text-white">
-            <RollingNumber value={5} />+
+          <h3 className="font-serif text-5xl md:text-6xl mb-4 text-white flex justify-center items-center">
+            <MechanicalOdometerCounter to={5} fontSize={60} />+
           </h3>
           <p className="text-sm tracking-widest uppercase text-muted-foreground">Years of Creative Experience</p>
         </div>
