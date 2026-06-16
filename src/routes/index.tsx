@@ -22,7 +22,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <PageShell noPadding>
-      <div className="relative min-h-[100dvh] w-full flex flex-col md:flex-row items-center justify-center md:justify-start overflow-hidden bg-transparent px-[5vw] pt-28 md:pt-0">
+      <div className="relative min-h-[100vh] min-h-[100dvh] w-full flex flex-col md:flex-row items-center justify-center md:justify-start overflow-hidden bg-transparent px-[5vw] pt-28 md:pt-0">
         
         {/* Left Side: Text */}
         <div className="relative z-20 w-full md:w-[45%] flex-shrink-0 text-center md:text-left pointer-events-none mt-[5vh] md:mt-0 order-1 md:order-none">
