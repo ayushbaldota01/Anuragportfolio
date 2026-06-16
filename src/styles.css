@@ -218,14 +218,15 @@
   }
 
   .portfolio-nav { 
-    position: fixed; 
-    left: 50%; 
-    top: 1.5rem; 
+    position: relative; 
+    left: unset; 
+    top: unset; 
     z-index: 40; 
     display: flex; 
     width: calc(100% - 2rem);
     max-width: fit-content;
-    transform: translateX(-50%); 
+    margin-inline: auto;
+    transform: none; 
     align-items: center; 
     justify-content: space-between; 
     gap: 1.5rem; 
@@ -236,12 +237,10 @@
     box-shadow: var(--nav-shadow); 
     -webkit-backdrop-filter: blur(26px);
     backdrop-filter: blur(26px); 
-    animation: nav-fade-up 700ms ease-out .9s both; 
   }
 
   @media (min-width: 768px) {
     .portfolio-nav {
-      top: 1.5rem;
       width: min(100%, 72rem);
       max-width: none;
       padding: 1rem 3rem;

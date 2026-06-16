@@ -22,11 +22,13 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <PageShell noPadding>
-      <div className="relative min-h-[100dvh] w-full flex flex-col md:flex-row items-center justify-center md:justify-start overflow-hidden bg-transparent px-[5vw] pt-24 md:pt-0">
+      <div className="relative min-h-[100dvh] w-full flex flex-col md:flex-row items-center justify-center md:justify-start overflow-hidden bg-transparent px-[5vw] pt-28 md:pt-0">
         
         {/* Left Side: Text */}
         <div className="relative z-20 w-full md:w-[45%] flex-shrink-0 text-center md:text-left pointer-events-none mt-[5vh] md:mt-0 order-1 md:order-none">
           <motion.h1 
+            initial="hidden"
+            animate="visible"
             variants={{
               hidden: { opacity: 0 },
               visible: {
@@ -84,6 +86,8 @@ function Index() {
 
         {/* Right Side: 3D Element */}
         <motion.div
+          initial="hidden"
+          animate="visible"
           variants={{
             hidden: { opacity: 0, scale: 0.85, filter: "blur(10px)" },
             visible: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { delay: 0.8, duration: 1.6, ease: [0.16, 1, 0.3, 1] } }
@@ -100,6 +104,8 @@ function Index() {
         
         {/* Scroll Indicator */}
         <motion.div 
+          initial="hidden"
+          animate="visible"
           className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 pointer-events-none z-20"
           variants={{
             hidden: { opacity: 0, y: 10 },

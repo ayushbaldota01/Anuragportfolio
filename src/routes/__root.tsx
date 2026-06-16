@@ -91,8 +91,17 @@ function RootComponent() {
         <AuroraField />
       </motion.div>
 
+      {/* Top blur overlay — separate from nav so it renders consistently across browsers */}
       <motion.div
-        className="fixed top-0 left-0 w-full z-50 pointer-events-none [&>*]:pointer-events-auto"
+        className="top-blur-overlay"
+        aria-hidden="true"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: introDone ? 1 : 0 }}
+        transition={{ duration: 1.5, delay: 1.2, ease: "easeOut" }}
+      />
+
+      <motion.div
+        className="fixed top-0 left-0 w-full z-50 pointer-events-none [&>*]:pointer-events-auto flex items-start justify-center pt-6 px-4"
         initial={{ opacity: 0, y: -20 }}
         animate={{ 
           opacity: introDone ? 1 : 0, 
