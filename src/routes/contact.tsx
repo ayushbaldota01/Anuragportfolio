@@ -91,7 +91,7 @@ function Contact() {
                 Instagram
               </a>
               <a className="nav-link text-xs tracking-widest uppercase font-medium" href="#">LinkedIn</a>
-              <a className="nav-link text-xs tracking-widest uppercase font-medium" href="#">Newsletter</a>
+              <span className="nav-link text-xs tracking-widest uppercase font-medium cursor-default opacity-50">Newsletter</span>
             </div>
           </div>
         </div>
