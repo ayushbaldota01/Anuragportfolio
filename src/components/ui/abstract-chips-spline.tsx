@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useInView } from 'framer-motion';
 
 interface AbstractChipsSplineProps {
   scene: string;
@@ -8,6 +9,22 @@ interface AbstractChipsSplineProps {
 export function AbstractChipsSpline({ scene, className }: AbstractChipsSplineProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const appRef = useRef<any>(null);
+  const isInView = useInView(containerRef);
+
+  // Pause or play the spline scene based on viewport visibility
+  useEffect(() => {
+    if (appRef.current) {
+      try {
+        if (isInView) {
+          appRef.current.play();
+        } else {
+          appRef.current.stop();
+        }
+      } catch (e) {
+        // Silently ignore if methods don't exist
+      }
+    }
+  }, [isInView]);
 
   useEffect(() => {
     if (!containerRef.current) return;

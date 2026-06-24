@@ -62,15 +62,7 @@ const createClothMaterial = () => {
       
       void main() {
         vUv = uv;
-        vec3 pos = position;
-        
-        // Gentle ripple
-        float ripple1 = sin(pos.x * 2.0 + time * 2.0) * 0.05;
-        float ripple2 = sin(pos.y * 2.5 + time * 1.5) * 0.05;
-        
-        pos.z += (ripple1 + ripple2);
-        
-        gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+        gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
       }
     `,
     fragmentShader: `
@@ -154,36 +146,41 @@ function ScatteredImages({ images, progress }: { images: any[], progress: Motion
        mesh.position.x = base.x * spread;
        mesh.position.z = base.z * spread;
        
-       // Add a floating hover effect
-       mesh.position.y = base.y + Math.sin(time * 0.8 + i) * 0.4;
-       
+       // Keep images static (no floating or spinning)
+       mesh.position.y = base.y;
        mesh.rotation.x = base.rotX;
        mesh.rotation.y = base.rotY;
-       // Continue slowly spinning them as they spread
-       mesh.rotation.z = base.rotZ + time * 0.05 * (i % 2 === 0 ? 1 : -1);
+       mesh.rotation.z = base.rotZ;
 
        const mat = materials[i];
        if (mat && mat.uniforms) {
-          mat.uniforms.time.value = time;
           // Fade out as they spread really far (when progress is near 1)
           mat.uniforms.opacity.value = 1 - Math.pow(p, 3);
-          
-          if (textures.length > i && textures[i]) {
-            mat.uniforms.map.value = textures[i];
-            
-            // Adjust aspect ratio scale dynamically once texture is loaded
-            const aspect = textures[i].image ? textures[i].image.width / textures[i].image.height : 1;
-            mesh.scale.set(base.scale * 2 * aspect, base.scale * 2, 1);
-          }
        }
     });
   });
+
+  // Apply textures and calculate scale only once when textures load, saving massive CPU in useFrame
+  useEffect(() => {
+    meshes.current.forEach((mesh, i) => {
+      if (!mesh) return;
+      const mat = materials[i];
+      const base = basePositions[i];
+      if (textures.length > i && textures[i]) {
+        if (mat && mat.uniforms) {
+          mat.uniforms.map.value = textures[i];
+        }
+        const aspect = textures[i].image ? textures[i].image.width / textures[i].image.height : 1;
+        mesh.scale.set(base.scale * 2 * aspect, base.scale * 2, 1);
+      }
+    });
+  }, [textures, materials, basePositions]);
 
   return (
     <>
       {basePositions.map((_, i) => (
         <mesh key={i} ref={(el) => (meshes.current[i] = el)}>
-          <planeGeometry args={[1, 1, 32, 32]} />
+          <planeGeometry args={[1, 1]} />
           <primitive object={materials[i]} attach="material" />
         </mesh>
       ))}
