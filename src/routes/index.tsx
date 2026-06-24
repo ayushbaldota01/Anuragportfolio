@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageShell } from "../components/portfolio-chrome";
 import { LogoMarquee } from "../components/ui/logo-marquee";
 import { FeaturedWork } from "../components/featured-work";
+import { TransitionGallery } from "../components/ui/transition-gallery";
 import { AbstractChipsSpline } from "../components/ui/abstract-chips-spline";
 import { motion } from "framer-motion";
 
@@ -124,6 +125,8 @@ function Index() {
           </div>
         </motion.div>
       </div>
+
+      <TransitionGallery />
 
       <FeaturedWork />
 
