@@ -37,6 +37,12 @@ export function AbstractChipsSpline({ scene, className }: AbstractChipsSplinePro
     canvas.style.height = '100%';
     canvas.style.display = 'block';
     canvas.style.background = 'transparent';
+    // Safari fix: force canvas onto its own compositing layer so it
+    // respects the parent's z-index and doesn't paint over siblings
+    canvas.style.position = 'relative';
+    canvas.style.zIndex = '0';
+    (canvas.style as any).webkitTransform = 'translateZ(0)';
+    canvas.style.transform = 'translateZ(0)';
 
     // KEY FIX: Monkey-patch getContext on THIS specific canvas.
     // When the Spline runtime (via Three.js) internally calls

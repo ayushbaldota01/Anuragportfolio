@@ -23,10 +23,20 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <PageShell noPadding>
-      <div className="relative min-h-[100vh] min-h-[100dvh] w-full flex flex-col md:flex-row items-center justify-center md:justify-start overflow-hidden bg-transparent px-[5vw] pt-28 md:pt-0">
+      <div 
+        className="relative min-h-[100vh] min-h-[100dvh] w-full flex flex-col md:flex-row items-center justify-center md:justify-start overflow-hidden bg-transparent px-[5vw] pt-28 md:pt-0"
+        style={{ isolation: 'isolate' }}
+      >
         
         {/* Left Side: Text */}
-        <div className="relative z-20 w-full md:w-[45%] flex-shrink-0 text-center md:text-left pointer-events-none mt-[5vh] md:mt-0 order-1 md:order-none">
+        <div
+          className="relative z-20 w-full md:w-[45%] flex-shrink-0 text-center md:text-left pointer-events-none mt-[5vh] md:mt-0 order-1 md:order-none"
+          style={{
+            WebkitTransform: 'translateZ(0)',
+            transform: 'translateZ(0)',
+            willChange: 'transform',
+          }}
+        >
           <motion.h1 
             initial="hidden"
             animate="visible"
@@ -94,6 +104,10 @@ function Index() {
             visible: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { delay: 0.8, duration: 1.6, ease: [0.16, 1, 0.3, 1] } }
           }}
           className="relative md:absolute right-0 top-0 z-[5] w-full md:w-[58%] h-[55vh] md:h-full pointer-events-auto flex items-center justify-center order-2 md:order-none -mt-8 md:mt-0"
+          style={{
+            WebkitTransform: 'translateZ(0)',
+            transform: 'translateZ(0)',
+          }}
         >
           <div className="w-full h-full">
             <AbstractChipsSpline

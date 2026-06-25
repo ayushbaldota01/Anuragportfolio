@@ -134,6 +134,12 @@ function RootComponent() {
             transition: { duration: 1.6, delay: 0, ease: [0.25, 1, 0.5, 1] } 
           }
         }}
+        style={{
+          isolation: 'isolate',
+          WebkitBackfaceVisibility: 'hidden',
+          backfaceVisibility: 'hidden',
+          willChange: 'transform, opacity, filter',
+        }}
       >
         <Outlet />
       </motion.div>
