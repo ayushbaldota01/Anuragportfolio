@@ -184,15 +184,19 @@ export function FeaturedWork() {
               variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: "easeOut" } } }}
               className="flex flex-col items-center w-full max-w-[380px] mx-auto"
             >
-              <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
-                <img src={project.image} className="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-500" alt={project.title} />
-              </div>
               <motion.div 
-                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut", delay: 0.15 } } }}
-                className="mt-6 text-center"
+                className="w-full flex flex-col items-center cursor-pointer group"
+                animate={{ y: [0, -12, 0] }}
+                transition={{ repeat: Infinity, duration: 4 + (idx % 3), ease: "easeInOut", delay: idx * 0.2 }}
+                whileHover={{ y: -24, transition: { duration: 0.4, ease: "easeOut" } }}
               >
-                <h4 className="font-serif text-2xl md:text-3xl text-white">{project.title}</h4>
-                <p className="text-white/50 text-[10px] tracking-widest uppercase mt-2">{project.category}</p>
+                <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] transition-all duration-500">
+                  <img src={project.image} className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" alt={project.title} />
+                </div>
+                <div className="mt-6 text-center">
+                  <h4 className="font-serif text-2xl md:text-3xl text-white">{project.title}</h4>
+                  <p className="text-white/50 text-[10px] tracking-widest uppercase mt-2">{project.category}</p>
+                </div>
               </motion.div>
             </motion.div>
           ))}
