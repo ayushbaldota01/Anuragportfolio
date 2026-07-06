@@ -13,14 +13,14 @@ type AuroraTheme = {
 
 const AURORA_THEMES: Record<string, AuroraTheme> = {
   "/": {
-    // Home — deep purple-violet-blue
-    c1: "oklch(0.62 0.31 285 / 0.95)", x1: "77%", y1: "10%",
-    c2: "oklch(0.55 0.31 264 / 0.9)", x2: "80%", y2: "33%",
-    c3: "oklch(0.52 0.25 345 / 0.78)", x3: "72%", y3: "70%",
-    c4: "oklch(0.38 0.2  355 / 0.72)", x4: "12%", y4: "88%",
-    base1: "oklch(0.035 0.02 292)",
-    base2: "oklch(0.055 0.045 284)",
-    base3: "oklch(0.24  0.18  286)",
+    // Home — black, grey, white
+    c1: "oklch(0.8 0 0 / 0.6)", x1: "77%", y1: "10%",
+    c2: "oklch(0.6 0 0 / 0.5)", x2: "80%", y2: "33%",
+    c3: "oklch(0.4 0 0 / 0.4)", x3: "72%", y3: "70%",
+    c4: "oklch(0.2 0 0 / 0.3)", x4: "12%", y4: "88%",
+    base1: "oklch(0.05 0 0)",
+    base2: "oklch(0.10 0 0)",
+    base3: "oklch(0.15 0 0)",
   },
   "/notes": {
     // Notes — vivid violet-magenta

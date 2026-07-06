@@ -166,7 +166,7 @@ export function FeaturedWork() {
         </p>
       </div>
 
-      {/* 3-Image Intro Section */}
+      {/* 3x3 Grid Intro Section */}
       <div className="w-full min-h-[80vh] flex flex-col items-center justify-center pt-24 pb-32 z-20 relative bg-transparent">
         <motion.div 
           initial="hidden"
@@ -174,62 +174,28 @@ export function FeaturedWork() {
           viewport={{ once: true, margin: "-80px" }}
           variants={{
             hidden: { opacity: 0 },
-            visible: { opacity: 1, transition: { staggerChildren: 0.25 } }
+            visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
           }}
-          className="flex flex-row items-start justify-center gap-6 md:gap-10 lg:gap-16 w-full max-w-[1400px] px-4"
+          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 w-full max-w-[1400px] px-8"
         >
-          
-          {/* Left Card */}
-          <motion.div 
-            variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: "easeOut" } } }}
-            className="flex flex-col items-center w-1/3 max-w-[380px]"
-          >
-            <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
-              <img src={projects[0].image} className="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-500" alt={projects[0].title} />
-            </div>
+          {projects.slice(0, 9).map((project, idx) => (
             <motion.div 
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut", delay: 0.15 } } }}
-              className="mt-6 text-center"
+              key={project.id}
+              variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: "easeOut" } } }}
+              className="flex flex-col items-center w-full max-w-[380px] mx-auto"
             >
-              <h4 className="font-serif text-2xl md:text-3xl text-white">{projects[0].title}</h4>
-              <p className="text-white/50 text-[10px] tracking-widest uppercase mt-2">{projects[0].category}</p>
+              <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
+                <img src={project.image} className="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-500" alt={project.title} />
+              </div>
+              <motion.div 
+                variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut", delay: 0.15 } } }}
+                className="mt-6 text-center"
+              >
+                <h4 className="font-serif text-2xl md:text-3xl text-white">{project.title}</h4>
+                <p className="text-white/50 text-[10px] tracking-widest uppercase mt-2">{project.category}</p>
+              </motion.div>
             </motion.div>
-          </motion.div>
-          
-          {/* Center Card */}
-          <motion.div 
-            variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: "easeOut" } } }}
-            className="flex flex-col items-center w-1/3 max-w-[380px]"
-          >
-            <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
-              <img src={projects[1].image} className="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-500" alt={projects[1].title} />
-            </div>
-            <motion.div 
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut", delay: 0.15 } } }}
-              className="mt-6 text-center"
-            >
-              <h4 className="font-serif text-2xl md:text-3xl text-white">{projects[1].title}</h4>
-              <p className="text-white/50 text-[10px] tracking-widest uppercase mt-2">{projects[1].category}</p>
-            </motion.div>
-          </motion.div>
-
-          {/* Right Card */}
-          <motion.div 
-            variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: "easeOut" } } }}
-            className="flex flex-col items-center w-1/3 max-w-[380px]"
-          >
-            <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)]">
-              <img src={projects[2].image} className="w-full h-full object-cover opacity-85 hover:opacity-100 transition-opacity duration-500" alt={projects[2].title} />
-            </div>
-            <motion.div 
-              variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.7, ease: "easeOut", delay: 0.15 } } }}
-              className="mt-6 text-center"
-            >
-              <h4 className="font-serif text-2xl md:text-3xl text-white">{projects[2].title}</h4>
-              <p className="text-white/50 text-[10px] tracking-widest uppercase mt-2">{projects[2].category}</p>
-            </motion.div>
-          </motion.div>
-
+          ))}
         </motion.div>
       </div>
 
