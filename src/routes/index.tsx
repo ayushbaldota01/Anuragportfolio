@@ -140,11 +140,11 @@ function Index() {
         </motion.div>
       </div>
 
-      <TransitionGallery />
-
       <div className="py-12 md:py-20 w-full relative z-30">
         <LogoMarquee />
       </div>
+
+      <TransitionGallery />
 
       <FeaturedWork />
     </PageShell>
