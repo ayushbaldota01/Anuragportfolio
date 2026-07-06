@@ -43,6 +43,9 @@ export function AbstractChipsSpline({ scene, className }: AbstractChipsSplinePro
     canvas.style.zIndex = '0';
     (canvas.style as any).webkitTransform = 'translateZ(0)';
     canvas.style.transform = 'translateZ(0)';
+    
+    // Apply grayscale filter to strip the purple color and match the monochrome theme
+    canvas.style.filter = 'grayscale(100%) brightness(1.15) contrast(1.1)';
 
     // KEY FIX: Monkey-patch getContext on THIS specific canvas.
     // When the Spline runtime (via Three.js) internally calls

@@ -142,9 +142,11 @@ function Index() {
 
       <TransitionGallery />
 
-      <FeaturedWork />
+      <div className="py-12 md:py-20 w-full relative z-30">
+        <LogoMarquee />
+      </div>
 
-      <LogoMarquee />
+      <FeaturedWork />
     </PageShell>
   );
 }
