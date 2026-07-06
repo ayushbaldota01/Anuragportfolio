@@ -109,7 +109,7 @@ function Index() {
             transform: 'translateZ(0)',
           }}
         >
-          <div className="w-full h-full md:translate-x-16 lg:translate-x-32 md:scale-110 lg:scale-125">
+          <div className="w-full h-full md:translate-x-16 lg:translate-x-32 scale-75 md:scale-[0.88] lg:scale-100">
             <AbstractChipsSpline
               scene={CHIPS_SCENE_URL}
               className="w-full h-full"
