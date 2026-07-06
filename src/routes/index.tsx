@@ -24,7 +24,7 @@ function Index() {
   return (
     <PageShell noPadding>
       <div 
-        className="relative min-h-[100vh] min-h-[100dvh] w-full flex flex-col md:flex-row items-center justify-center md:justify-start overflow-hidden bg-transparent px-[5vw] pt-28 md:pt-0"
+        className="relative min-h-[100vh] min-h-[100dvh] w-full flex flex-col md:flex-row items-center justify-center md:justify-start overflow-hidden bg-transparent px-4 sm:px-[5vw] pt-24 sm:pt-28 md:pt-0"
         style={{ isolation: 'isolate' }}
       >
         
@@ -50,7 +50,7 @@ function Index() {
                 }
               }
             }}
-            className="font-serif text-[clamp(2.8rem,7vw,5.5rem)] font-bold leading-[1.08] tracking-tight text-white select-none flex flex-col items-center md:items-start justify-center drop-shadow-lg"
+            className="font-serif text-[clamp(2.2rem,7vw,5.5rem)] font-bold leading-[1.08] tracking-tight text-white select-none flex flex-col items-center md:items-start justify-center drop-shadow-lg"
           >
             <motion.span 
               variants={{
@@ -103,13 +103,13 @@ function Index() {
             hidden: { opacity: 0, scale: 0.85, filter: "blur(10px)" },
             visible: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { delay: 0.8, duration: 1.6, ease: [0.16, 1, 0.3, 1] } }
           }}
-          className="relative md:absolute right-0 top-0 z-[5] w-full md:w-[58%] h-[55vh] md:h-full pointer-events-auto flex items-center justify-center order-2 md:order-none -mt-8 md:mt-0"
+          className="relative md:absolute right-0 top-0 z-[5] w-full md:w-[58%] h-[40vh] sm:h-[55vh] md:h-full pointer-events-auto flex items-center justify-center order-2 md:order-none -mt-4 sm:-mt-8 md:mt-0"
           style={{
             WebkitTransform: 'translateZ(0)',
             transform: 'translateZ(0)',
           }}
         >
-          <div className="w-full h-full md:translate-x-16 lg:translate-x-32 scale-75 md:scale-[0.88] lg:scale-100">
+          <div className="w-full h-full translate-x-0 md:translate-x-16 lg:translate-x-32 scale-[0.65] sm:scale-75 md:scale-[0.88] lg:scale-100">
             <AbstractChipsSpline
               scene={CHIPS_SCENE_URL}
               className="w-full h-full"
@@ -121,7 +121,7 @@ function Index() {
         <motion.div 
           initial="hidden"
           animate="visible"
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 pointer-events-none z-20"
+          className="absolute bottom-6 sm:bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-3 sm:gap-4 pointer-events-none z-20"
           variants={{
             hidden: { opacity: 0, y: 10 },
             visible: { opacity: 0.7, y: 0, transition: { delay: 2.8, duration: 1.5, ease: "easeOut" } }
@@ -140,7 +140,7 @@ function Index() {
         </motion.div>
       </div>
 
-      <div className="py-12 md:py-20 w-full relative z-30">
+      <div className="py-8 sm:py-12 md:py-20 w-full relative z-30">
         <LogoMarquee />
       </div>
 

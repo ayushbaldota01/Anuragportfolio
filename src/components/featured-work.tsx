@@ -112,7 +112,7 @@ function ProjectItem({ project, index, total, scrollIndex }: any) {
         willChange: "transform, opacity",
       }}
     >
-      <div className="relative w-[32vw] min-w-[260px] max-w-[420px] aspect-[4/5] overflow-hidden rounded-xl bg-black">
+      <div className="relative w-[70vw] sm:w-[50vw] md:w-[32vw] min-w-[220px] max-w-[420px] aspect-[4/5] overflow-hidden rounded-xl bg-black">
         <img
           src={project.image}
           alt={project.title}
@@ -125,7 +125,7 @@ function ProjectItem({ project, index, total, scrollIndex }: any) {
         style={{ opacity: textOpacity, y: textY, willChange: "transform, opacity" }}
         className="absolute top-[105%] left-1/2 -translate-x-1/2 w-[200%] text-center pointer-events-none"
       >
-        <h3 className="font-serif text-4xl md:text-5xl lg:text-6xl text-white whitespace-nowrap">
+        <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white whitespace-nowrap">
           {project.title}
         </h3>
         <p className="text-white/60 uppercase tracking-[0.25em] text-xs mt-3">
@@ -157,17 +157,17 @@ export function FeaturedWork() {
     <section className="relative w-full bg-transparent flex flex-col">
       
       {/* Normal Header for the FeaturedWork section */}
-      <div className="relative w-full px-5 md:px-8 lg:px-12 xl:px-16 pt-24 md:pt-32 z-30 pointer-events-none">
-        <h2 className="font-serif text-[clamp(3rem,8vw,7rem)] font-bold leading-[0.95] tracking-tight text-white drop-shadow-md">
+      <div className="relative w-full px-4 sm:px-5 md:px-8 lg:px-12 xl:px-16 pt-16 sm:pt-20 md:pt-32 z-30 pointer-events-none">
+        <h2 className="font-serif text-[clamp(2.2rem,8vw,7rem)] font-bold leading-[0.95] tracking-tight text-white drop-shadow-md">
           FEATURED WORK
         </h2>
-        <p className="mt-4 text-white/50 uppercase tracking-[0.2em] text-xs font-medium drop-shadow-md">
+        <p className="mt-3 sm:mt-4 text-white/50 uppercase tracking-[0.2em] text-[10px] sm:text-xs font-medium drop-shadow-md">
           Scroll to explore
         </p>
       </div>
 
       {/* 3x3 Grid Intro Section */}
-      <div className="w-full min-h-[80vh] flex flex-col items-center justify-center pt-24 pb-32 z-20 relative bg-transparent">
+      <div className="w-full min-h-[60vh] sm:min-h-[80vh] flex flex-col items-center justify-center pt-12 sm:pt-24 pb-16 sm:pb-32 z-20 relative bg-transparent">
         <motion.div 
           initial="hidden"
           whileInView="visible"
@@ -176,13 +176,13 @@ export function FeaturedWork() {
             hidden: { opacity: 0 },
             visible: { opacity: 1, transition: { staggerChildren: 0.15 } }
           }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12 lg:gap-16 w-full max-w-[1400px] px-8"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 sm:gap-10 lg:gap-16 w-full max-w-[1400px] px-4 sm:px-8"
         >
           {projects.slice(0, 9).map((project, idx) => (
             <motion.div 
               key={project.id}
               variants={{ hidden: { opacity: 0, y: 60 }, visible: { opacity: 1, y: 0, transition: { duration: 0.9, ease: "easeOut" } } }}
-              className="flex flex-col items-center w-full max-w-[380px] mx-auto"
+              className="flex flex-col items-center w-full max-w-[320px] sm:max-w-[380px] mx-auto"
             >
               <motion.div 
                 className="w-full flex flex-col items-center cursor-pointer group"
@@ -193,9 +193,9 @@ export function FeaturedWork() {
                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] transition-all duration-500">
                   <img src={project.image} className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" alt={project.title} />
                 </div>
-                <div className="mt-6 text-center">
-                  <h4 className="font-serif text-2xl md:text-3xl text-white">{project.title}</h4>
-                  <p className="text-white/50 text-[10px] tracking-widest uppercase mt-2">{project.category}</p>
+                <div className="mt-4 sm:mt-6 text-center">
+                  <h4 className="font-serif text-xl sm:text-2xl md:text-3xl text-white">{project.title}</h4>
+                  <p className="text-white/50 text-[9px] sm:text-[10px] tracking-widest uppercase mt-1.5 sm:mt-2">{project.category}</p>
                 </div>
               </motion.div>
             </motion.div>

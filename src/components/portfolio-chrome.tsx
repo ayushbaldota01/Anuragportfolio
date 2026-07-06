@@ -128,7 +128,7 @@ export function PortfolioNav() {
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background/95 backdrop-blur-xl animate-in fade-in duration-300 md:hidden">
+        <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-background/95 md:hidden" style={{ WebkitBackdropFilter: 'blur(24px)', backdropFilter: 'blur(24px)', minHeight: '100dvh', paddingTop: 'env(safe-area-inset-top)', paddingBottom: 'env(safe-area-inset-bottom)' }}>
           <nav className="flex flex-col items-center gap-8">
             {navLinks.map(([label, to]) => (
               <Link
@@ -136,7 +136,7 @@ export function PortfolioNav() {
                 to={to}
                 activeOptions={{ exact: true }}
                 activeProps={{ className: "text-[#4ADE80]!" }}
-                className="text-4xl md:text-5xl font-serif font-medium tracking-tight text-white/50 hover:text-white transition-colors"
+                className="text-3xl sm:text-4xl md:text-5xl font-serif font-medium tracking-tight text-white/50 hover:text-white transition-colors py-1"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {label}
@@ -280,7 +280,7 @@ export function OpeningCurtain({ onComplete }: { onComplete?: () => void }) {
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 1.8, ease: [0.16, 1, 0.3, 1] }}
-                className="w-auto h-[30vh] md:h-[45vh] object-contain pt-4"
+                className="w-auto h-[25vh] sm:h-[30vh] md:h-[45vh] object-contain pt-4"
               />
               <motion.div
                 initial={{ width: 0, opacity: 0 }}

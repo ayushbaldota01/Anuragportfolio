@@ -83,7 +83,7 @@ function Services() {
   return (
     <PageShell>
       {/* Top Header Section */}
-      <section className="grid gap-10 md:grid-cols-[1.2fr_.8fr] items-end pt-10 px-6 md:px-12 lg:px-16 w-full">
+      <section className="grid gap-8 sm:gap-10 md:grid-cols-[1.2fr_.8fr] items-end pt-6 sm:pt-10 px-4 sm:px-6 md:px-12 lg:px-16 w-full">
         <div>
           <span className="font-sans text-[0.65rem] font-bold tracking-[0.2em] text-[#4ADE80] uppercase block mb-6">
             Services
@@ -106,7 +106,7 @@ function Services() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, margin: "-5%" }}
-        className="mt-20 md:mt-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 px-6 md:px-12 lg:px-16"
+        className="mt-12 sm:mt-16 md:mt-24 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 px-4 sm:px-6 md:px-12 lg:px-16"
       >
         {serviceList.map((service, index) => {
           return (
@@ -126,7 +126,7 @@ function Services() {
                   ease: "easeInOut",
                   delay: index * 0.2
                 }}
-                className="h-full bg-white/5 border border-white/10 rounded-xl p-8 flex flex-col justify-start hover:bg-white/10 transition-colors duration-300"
+                className="h-full bg-white/5 border border-white/10 rounded-xl p-5 sm:p-8 flex flex-col justify-start hover:bg-white/10 transition-colors duration-300"
               >
                 <h2 className="font-sans text-lg font-bold text-white mb-3">
                   {service.title}

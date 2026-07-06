@@ -19,8 +19,8 @@ export function TransitionGallery() {
   const bottomRow = projects.slice(5, 10);
 
   return (
-    <section ref={containerRef} className="relative w-full h-[150vh] bg-transparent">
-      <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-center gap-6 md:gap-10 bg-transparent">
+    <section ref={containerRef} className="relative w-full h-[100vh] sm:h-[120vh] md:h-[150vh] bg-transparent">
+      <div className="sticky top-0 w-full h-screen overflow-hidden flex flex-col justify-center gap-4 sm:gap-6 md:gap-10 bg-transparent">
         
         {/* Top Row: Glides Right to Left */}
         <motion.div 
