@@ -3,65 +3,63 @@ import { motion, useScroll, useTransform, useSpring, useMotionTemplate } from "f
 
 export const projects = [
   {
-    id: "lululemon",
-    title: "LULULEMON",
+    id: "gq-varun",
+    title: "GQ x Varun Dhawan",
     category: "Brand Campaign",
     image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=80",
   },
   {
-    id: "mission-fed",
-    title: "MISSION FED",
-    category: "Digital Experience",
+    id: "asian-paints",
+    title: "Asian Paints AD Design Show",
+    category: "Exhibition",
     image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=1200&q=80",
+    link: "https://youtu.be/_wfZiewOmek?si=R7gyhhGiuA3qELJO",
   },
   {
-    id: "intuit",
-    title: "INTUIT",
-    category: "Product Design",
+    id: "netflix",
+    title: "NETFLIX Murder Mubarak",
+    category: "Promo",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
+    link: "https://youtube.com/shorts/r3TeKesHISk?si=zL-HjUJqLISgXQnc",
   },
   {
-    id: "cutwater",
-    title: "CUTWATER",
-    category: "Brand Identity",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: "lafayette",
-    title: "THE LAFAYETTE",
+    id: "jw-marriott",
+    title: "JW Marriott Saviour Series",
     category: "Hospitality",
+    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+    link: "https://youtube.com/shorts/bKx8orCjPK0?si=VhMNE6q1jlQ8ANwa",
+  },
+  {
+    id: "tira-beauty",
+    title: "Tira Beauty x Kareena Kapoor",
+    category: "Beauty Campaign",
     image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1600&q=80",
   },
   {
-    id: "illumina",
-    title: "ILLUMINA",
-    category: "Corporate Identity",
+    id: "wedding-affairs",
+    title: "Wedding Affairs x Urvashi",
+    category: "Fashion & Wedding",
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
   },
   {
-    id: "vuori",
-    title: "VUORI",
-    category: "E-Commerce",
+    id: "food-photography",
+    title: "Food Photography",
+    category: "Photography",
     image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    id: "nike",
-    title: "NIKE",
-    category: "Campaign",
+    id: "sunny-leone",
+    title: "Sunny Leone x Times of India",
+    category: "Editorial",
     image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80",
   },
   {
-    id: "sony",
-    title: "SONY",
-    category: "Product Launch",
+    id: "adds-karigars",
+    title: "ADDS x Karigars",
+    category: "Documentary",
     image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: "porsche",
-    title: "PORSCHE",
-    category: "Luxury Automotive",
-    image: "https://images.unsplash.com/photo-1503376712351-1c22d42ca0fa?auto=format&fit=crop&w=1200&q=80",
-  },
+    link: "https://youtu.be/Ne6kB9pRHTA?si=orXTioEZb95dLU24",
+  }
 ];
 
 function ProjectItem({ project, index, total, scrollIndex }: any) {
@@ -189,6 +187,7 @@ export function FeaturedWork() {
                 animate={{ y: [0, -12, 0] }}
                 transition={{ repeat: Infinity, duration: 4 + (idx % 3), ease: "easeInOut", delay: idx * 0.2 }}
                 whileHover={{ y: -24, transition: { duration: 0.4, ease: "easeOut" } }}
+                onClick={() => (project as any).link && window.open((project as any).link, '_blank')}
               >
                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] transition-all duration-500">
                   <img src={project.image} className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" alt={project.title} />
