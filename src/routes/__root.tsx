@@ -74,13 +74,20 @@ function RootShell({ children }: { children: React.ReactNode }) {
 }
 
 function RootComponent() {
-  const [introDone, setIntroDone] = useState(false);
+  // Check if intro was already seen this session
+  const alreadySeen = typeof window !== 'undefined' && sessionStorage.getItem('intro_seen') === '1';
+  const [introDone, setIntroDone] = useState(alreadySeen);
 
   const ease = [0.25, 1, 0.5, 1] as const;
 
   return (
     <main className="page-root">
-      <OpeningCurtain onComplete={() => setIntroDone(true)} />
+      {!alreadySeen && (
+        <OpeningCurtain onComplete={() => {
+          sessionStorage.setItem('intro_seen', '1');
+          setIntroDone(true);
+        }} />
+      )}
       <CursorGlow />
 
       <motion.div

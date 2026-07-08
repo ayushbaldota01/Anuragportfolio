@@ -247,10 +247,25 @@ export function OpeningCurtain({ onComplete }: { onComplete?: () => void }) {
 
   useEffect(() => {
     if (phase === 'video' && videoRef.current) {
-      videoRef.current.play().catch(err => {
-        console.warn("Video autoplay blocked by browser. Transitioning page.", err);
-        handleVideoEnded();
-      });
+      const video = videoRef.current;
+      // Ensure muted is set programmatically (some browsers need this)
+      video.muted = true;
+      
+      const attemptPlay = () => {
+        video.play().catch(err => {
+          console.warn("Video autoplay attempt failed, retrying...", err);
+          // Retry: reload and try again after a short delay
+          setTimeout(() => {
+            video.load();
+            video.play().catch(finalErr => {
+              console.warn("Video autoplay blocked by browser. Skipping intro.", finalErr);
+              handleVideoEnded();
+            });
+          }, 300);
+        });
+      };
+      
+      attemptPlay();
     }
   }, [phase]);
 
@@ -310,7 +325,6 @@ export function OpeningCurtain({ onComplete }: { onComplete?: () => void }) {
                 preload="auto"
                 onEnded={handleVideoEnded}
                 onError={handleVideoEnded}
-                onStalled={handleVideoEnded}
                 src="/intro.mp4"
               />
               {/* Vignette Overlay */}
