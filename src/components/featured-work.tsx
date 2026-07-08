@@ -13,21 +13,18 @@ export const projects = [
     title: "Asian Paints AD Design Show",
     category: "Exhibition",
     image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=1200&q=80",
-    link: "https://youtu.be/_wfZiewOmek?si=R7gyhhGiuA3qELJO",
   },
   {
     id: "netflix",
     title: "NETFLIX Murder Mubarak",
     category: "Promo",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
-    link: "https://youtube.com/shorts/r3TeKesHISk?si=zL-HjUJqLISgXQnc",
   },
   {
     id: "jw-marriott",
     title: "JW Marriott Saviour Series",
     category: "Hospitality",
     image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
-    link: "https://youtube.com/shorts/bKx8orCjPK0?si=VhMNE6q1jlQ8ANwa",
   },
   {
     id: "tira-beauty",
@@ -40,12 +37,14 @@ export const projects = [
     title: "Wedding Affairs x Urvashi",
     category: "Fashion & Wedding",
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
+    link: "https://www.instagram.com/reel/DU3Pif8CCek/?igsh=MTNuczE2aTZ1ZThhNQ==",
   },
   {
     id: "food-photography",
     title: "Food Photography",
     category: "Photography",
     image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
+    link: "https://www.instagram.com/p/DJJ9HC5Sb58/?igsh=MWk4YmU1bmhsdG1xMA==",
   },
   {
     id: "sunny-leone",
@@ -58,7 +57,6 @@ export const projects = [
     title: "ADDS x Karigars",
     category: "Documentary",
     image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=1200&q=80",
-    link: "https://youtu.be/Ne6kB9pRHTA?si=orXTioEZb95dLU24",
   }
 ];
 

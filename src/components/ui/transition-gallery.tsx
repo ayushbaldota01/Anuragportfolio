@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { useScroll, useTransform, motion } from 'framer-motion';
+import { useScroll, useTransform, motion, useSpring } from 'framer-motion';
 import { projects } from '../featured-work';
 
 export function TransitionGallery() {
@@ -10,9 +10,15 @@ export function TransitionGallery() {
     offset: ["start end", "end start"]
   });
 
+  const smoothProgress = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001
+  });
+
   // Slow horizontal scroll mapping
-  const x1 = useTransform(scrollYProgress, [0, 1], ["5vw", "-25vw"]);
-  const x2 = useTransform(scrollYProgress, [0, 1], ["-25vw", "5vw"]);
+  const x1 = useTransform(smoothProgress, [0, 1], ["5vw", "-25vw"]);
+  const x2 = useTransform(smoothProgress, [0, 1], ["-25vw", "5vw"]);
 
   // We only want 4-5 images per line
   const topRow = projects.slice(0, 5);

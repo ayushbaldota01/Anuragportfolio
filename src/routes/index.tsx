@@ -30,7 +30,7 @@ function Index() {
         
         {/* Left Side: Text */}
         <div
-          className="relative z-20 w-full md:w-[45%] flex-shrink-0 text-center md:text-left pointer-events-none mt-[5vh] md:mt-0 order-1 md:order-none"
+          className="relative z-20 w-full md:w-[40%] lg:w-[38%] flex-shrink-0 text-center md:text-left pointer-events-none mt-[5vh] md:mt-0 order-1 md:order-none pr-4 md:pr-8 lg:pr-12"
           style={{
             WebkitTransform: 'translateZ(0)',
             transform: 'translateZ(0)',
