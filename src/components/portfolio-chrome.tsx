@@ -53,14 +53,14 @@ const AURORA_THEMES: Record<string, AuroraTheme> = {
     base3: "oklch(0.18  0.14 182)",
   },
   "/contact": {
-    // Contact — warm amber-orange
-    c1: "oklch(0.58 0.18  65 / 0.9)", x1: "76%", y1: "15%",
-    c2: "oklch(0.52 0.20  55 / 0.85)", x2: "80%", y2: "42%",
-    c3: "oklch(0.44 0.16  45 / 0.75)", x3: "68%", y3: "74%",
-    c4: "oklch(0.32 0.12  50 / 0.68)", x4: "8%", y4: "88%",
-    base1: "oklch(0.04  0.03  62)",
-    base2: "oklch(0.06  0.05  58)",
-    base3: "oklch(0.20  0.14  60)",
+    // Contact — cool blue
+    c1: "oklch(0.58 0.18 260 / 0.9)", x1: "76%", y1: "15%",
+    c2: "oklch(0.52 0.20 255 / 0.85)", x2: "80%", y2: "42%",
+    c3: "oklch(0.44 0.16 250 / 0.75)", x3: "68%", y3: "74%",
+    c4: "oklch(0.32 0.12 265 / 0.68)", x4: "8%", y4: "88%",
+    base1: "oklch(0.04 0.03 262)",
+    base2: "oklch(0.06 0.05 258)",
+    base3: "oklch(0.20 0.14 260)",
   },
   "/services": {
     // Services — deep emerald & sage green
