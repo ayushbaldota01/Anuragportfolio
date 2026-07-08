@@ -72,7 +72,7 @@ const repeatedLogos = [...logoData, ...logoData, ...logoData, ...logoData];
 
 export function LogoMarquee() {
   return (
-    <section className="w-full py-5 md:py-8 overflow-hidden bg-linear-to-b from-amber-500/[0.03] via-transparent to-transparent border-t border-border/10">
+    <section className="w-full py-5 md:py-8 overflow-hidden bg-transparent">
       <div 
         className="relative flex w-full overflow-hidden"
         style={{
