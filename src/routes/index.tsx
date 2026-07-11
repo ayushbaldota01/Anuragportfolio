@@ -50,7 +50,7 @@ function Index() {
                 }
               }
             }}
-            className="font-serif text-[clamp(2.2rem,7vw,5.5rem)] font-bold leading-[1.08] tracking-tight text-white select-none flex flex-col items-center md:items-start justify-center drop-shadow-lg"
+            className="font-serif text-[clamp(1.65rem,5.25vw,4.125rem)] font-bold leading-[1.08] tracking-tight text-white select-none flex flex-col items-center md:items-start justify-center drop-shadow-lg"
           >
             <motion.span 
               variants={{
