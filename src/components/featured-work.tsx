@@ -14,6 +14,7 @@ export const projects = [
     category: "Exhibition",
     image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=1200&q=80",
     link: "https://youtu.be/_wfZiewOmek?si=R7gyhhGiuA3qELJO",
+    video: "/videos/asian-paints.mp4",
   },
   {
     id: "netflix",
@@ -21,6 +22,7 @@ export const projects = [
     category: "Promo",
     image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
     link: "https://youtube.com/shorts/r3TeKesHISk?si=zL-HjUJqLISgXQnc",
+    video: "/videos/murder-mubarak.mp4",
   },
   {
     id: "jw-marriott",
@@ -28,6 +30,7 @@ export const projects = [
     category: "Hospitality",
     image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
     link: "https://youtube.com/shorts/bKx8orCjPK0?si=VhMNE6q1jlQ8ANwa",
+    video: "/videos/gq-jw-marriott.mp4",
   },
   {
     id: "tira-beauty",
@@ -254,8 +257,19 @@ export function FeaturedWork() {
                 whileHover={{ y: -24, transition: { duration: 0.4, ease: "easeOut" } }}
                 onClick={() => (project as any).link && window.open((project as any).link, '_blank')}
               >
-                <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] transition-all duration-500">
-                  <CardMedia project={project} className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] transition-all duration-700 ease-out relative">
+                  <CardMedia project={project} className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out" />
+                  
+                  {(project as any).video && (
+                    <video
+                      src={(project as any).video}
+                      autoPlay
+                      loop
+                      muted
+                      playsInline
+                      className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                    />
+                  )}
                 </div>
                 <div className="mt-4 sm:mt-6 text-center px-2 w-full">
                   <h4 className="font-serif text-xl sm:text-2xl md:text-3xl text-white break-words">{project.title}</h4>
