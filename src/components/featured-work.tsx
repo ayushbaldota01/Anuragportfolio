@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionTemplate } from "framer-motion";
 
 export const projects = [
@@ -64,6 +64,67 @@ export const projects = [
   }
 ];
 
+// ── Helpers ──────────────────────────────────────────────────────────────────
+
+const CardMedia = ({ project, className }: { project: any, className: string }) => {
+  const [src, setSrc] = useState(() => {
+    if (!project.link) return project.image;
+    
+    // Check if it's a YouTube link
+    const ytMatch = project.link.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/);
+    if (ytMatch && ytMatch[1]) {
+      return `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`;
+    }
+    
+    // Fallback to Microlink screenshot for other links (like Instagram)
+    return `https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url`;
+  });
+  const [errorStage, setErrorStage] = useState(0);
+
+  return (
+    <img
+      src={src}
+      alt={project.title}
+      className={className}
+      onError={() => {
+        // If maxresdefault fails for YouTube, try hqdefault, then fallback to original project image
+        const ytMatch = project.link?.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|shorts\/))([\w-]{11})/);
+        
+        if (errorStage === 0 && ytMatch && ytMatch[1]) {
+          setSrc(`https://img.youtube.com/vi/${ytMatch[1]}/hqdefault.jpg`);
+          setErrorStage(1);
+        } else if (errorStage < 2) {
+          setSrc(project.image);
+          setErrorStage(2);
+        }
+      }}
+    />
+  );
+};
+
+// ── ThumbnailImage (fallback for non-YouTube links) ─────────────────────────
+const ThumbnailImage = ({ project, className }: { project: any; className: string }) => {
+  const [src, setSrc] = useState(() => {
+    if (!project.link) return project.image;
+    return `https://api.microlink.io/?url=${encodeURIComponent(project.link)}&screenshot=true&meta=false&embed=screenshot.url`;
+  });
+  const [errorStage, setErrorStage] = useState(0);
+
+  return (
+    <img
+      src={src}
+      alt={project.title}
+      className={className}
+      onError={() => {
+        if (errorStage < 1) {
+          setSrc(project.image);
+          setErrorStage(1);
+        }
+      }}
+    />
+  );
+};
+
 function ProjectItem({ project, index, total, scrollIndex }: any) {
   const isLeft = index % 2 === 0;
 
@@ -100,7 +161,7 @@ function ProjectItem({ project, index, total, scrollIndex }: any) {
     [20, 0, -20]
   );
 
-  const pointerEvents = useTransform(scrollIndex, (latest) => {
+  const pointerEvents = useTransform(scrollIndex, (latest: number) => {
     return (latest > index + 0.2 || latest < index - 1) ? "none" : "auto";
   });
 
@@ -119,19 +180,15 @@ function ProjectItem({ project, index, total, scrollIndex }: any) {
       }}
     >
       <div className="relative w-[70vw] sm:w-[50vw] md:w-[32vw] min-w-[220px] max-w-[420px] aspect-[4/5] overflow-hidden rounded-xl bg-black">
-        <img
-          src={project.image}
-          alt={project.title}
-          className="w-full h-full object-cover"
-        />
+        <CardMedia project={project} className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
       </div>
 
       <motion.div
         style={{ opacity: textOpacity, y: textY, willChange: "transform, opacity" }}
-        className="absolute top-[105%] left-1/2 -translate-x-1/2 w-[200%] text-center pointer-events-none"
+        className="absolute top-[105%] left-1/2 -translate-x-1/2 w-[90vw] md:w-[150%] text-center pointer-events-none px-4"
       >
-        <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white whitespace-nowrap">
+        <h3 className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-5xl text-white break-words">
           {project.title}
         </h3>
         <p className="text-white/60 uppercase tracking-[0.25em] text-xs mt-3">
@@ -198,10 +255,10 @@ export function FeaturedWork() {
                 onClick={() => (project as any).link && window.open((project as any).link, '_blank')}
               >
                 <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] transition-all duration-500">
-                  <img src={project.image} className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" alt={project.title} />
+                  <CardMedia project={project} className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
                 </div>
-                <div className="mt-4 sm:mt-6 text-center">
-                  <h4 className="font-serif text-xl sm:text-2xl md:text-3xl text-white">{project.title}</h4>
+                <div className="mt-4 sm:mt-6 text-center px-2 w-full">
+                  <h4 className="font-serif text-xl sm:text-2xl md:text-3xl text-white break-words">{project.title}</h4>
                   <p className="text-white/50 text-[9px] sm:text-[10px] tracking-widest uppercase mt-1.5 sm:mt-2">{project.category}</p>
                 </div>
               </motion.div>

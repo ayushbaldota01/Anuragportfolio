@@ -30,7 +30,7 @@ function Index() {
         
         {/* Left Side: Text */}
         <div
-          className="relative z-20 w-full md:w-[40%] lg:w-[38%] flex-shrink-0 text-center md:text-left pointer-events-none mt-[5vh] md:mt-0 order-1 md:order-none pr-4 md:pr-8 lg:pr-12"
+          className="relative z-20 w-full md:w-[40%] lg:w-[38%] flex-shrink-0 text-center md:text-left pointer-events-none mt-[8vh] md:mt-0 order-1 md:order-none px-4 md:px-0 md:pr-8 lg:pr-12"
           style={{
             WebkitTransform: 'translateZ(0)',
             transform: 'translateZ(0)',
@@ -103,13 +103,13 @@ function Index() {
             hidden: { opacity: 0, scale: 0.85, filter: "blur(10px)" },
             visible: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { delay: 0.8, duration: 1.6, ease: [0.16, 1, 0.3, 1] } }
           }}
-          className="relative md:absolute right-0 top-0 z-[5] w-full md:w-[58%] h-[40vh] sm:h-[55vh] md:h-full pointer-events-auto flex items-center justify-center order-2 md:order-none -mt-4 sm:-mt-8 md:mt-0"
+          className="relative md:absolute right-0 top-0 z-[5] w-full md:w-[58%] h-[45vh] sm:h-[55vh] md:h-full pointer-events-none flex items-center justify-center order-2 md:order-none"
           style={{
             WebkitTransform: 'translateZ(0)',
             transform: 'translateZ(0)',
           }}
         >
-          <div className="w-full h-full translate-x-0 md:translate-x-16 lg:translate-x-32 scale-[0.65] sm:scale-75 md:scale-[0.88] lg:scale-100">
+          <div className="w-full h-full translate-x-0 md:translate-x-16 lg:translate-x-32 scale-[0.8] sm:scale-[0.85] md:scale-[0.88] lg:scale-100">
             <AbstractChipsSpline
               scene={CHIPS_SCENE_URL}
               className="w-full h-full"
