@@ -24,13 +24,13 @@ function Index() {
   return (
     <PageShell noPadding>
       <div 
-        className="relative min-h-[100vh] min-h-[100dvh] w-full flex flex-col md:flex-row items-center justify-center md:justify-start overflow-hidden bg-transparent px-4 sm:px-[5vw] pt-24 sm:pt-28 md:pt-0"
+        className="relative min-h-[100vh] min-h-[100dvh] w-full flex flex-col lg:flex-row items-center justify-center lg:justify-start overflow-hidden bg-transparent px-4 sm:px-[5vw] pt-24 sm:pt-28 lg:pt-0"
         style={{ isolation: 'isolate' }}
       >
         
         {/* Left Side: Text */}
         <div
-          className="relative z-20 w-full md:w-[40%] lg:w-[38%] flex-shrink-0 text-center md:text-left pointer-events-none mt-[8vh] md:mt-0 order-1 md:order-none px-4 md:px-0 md:pr-8 lg:pr-12"
+          className="relative z-20 w-full lg:w-[40%] xl:w-[38%] flex-shrink-0 text-center lg:text-left pointer-events-none mt-[8vh] lg:mt-0 order-1 lg:order-none px-4 lg:px-0 lg:pr-8 xl:pr-12"
           style={{
             WebkitTransform: 'translateZ(0)',
             transform: 'translateZ(0)',
@@ -50,7 +50,7 @@ function Index() {
                 }
               }
             }}
-            className="font-serif text-[clamp(1.65rem,5.25vw,4.125rem)] font-bold leading-[1.08] tracking-tight text-white select-none flex flex-col items-center md:items-start justify-center drop-shadow-lg"
+            className="font-serif text-[clamp(1.65rem,5.25vw,4.125rem)] font-bold leading-[1.08] tracking-tight text-white select-none flex flex-col items-center lg:items-start justify-center drop-shadow-lg"
           >
             <motion.span 
               variants={{
@@ -103,13 +103,13 @@ function Index() {
             hidden: { opacity: 0, scale: 0.85, filter: "blur(10px)" },
             visible: { opacity: 1, scale: 1, filter: "blur(0px)", transition: { delay: 0.8, duration: 1.6, ease: [0.16, 1, 0.3, 1] } }
           }}
-          className="relative md:absolute right-0 top-0 z-[5] w-full md:w-[58%] h-[45vh] sm:h-[55vh] md:h-full pointer-events-none flex items-center justify-center order-2 md:order-none"
+          className="relative lg:absolute right-0 top-0 z-[5] w-full lg:w-[58%] h-[45vh] sm:h-[55vh] md:h-[60vh] lg:h-full pointer-events-none flex items-center justify-center order-2 lg:order-none"
           style={{
             WebkitTransform: 'translateZ(0)',
             transform: 'translateZ(0)',
           }}
         >
-          <div className="w-full h-full translate-x-0 md:translate-x-16 lg:translate-x-32 scale-[0.8] sm:scale-[0.85] md:scale-[0.88] lg:scale-100">
+          <div className="w-full h-full translate-x-0 lg:translate-x-16 xl:translate-x-32 scale-[0.8] sm:scale-[0.85] lg:scale-[0.88] xl:scale-100">
             <AbstractChipsSpline
               scene={CHIPS_SCENE_URL}
               className="w-full h-full"
