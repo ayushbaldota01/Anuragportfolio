@@ -257,17 +257,17 @@ export function FeaturedWork() {
                 whileHover={{ y: -24, transition: { duration: 0.4, ease: "easeOut" } }}
                 onClick={() => (project as any).link && window.open((project as any).link, '_blank')}
               >
-                <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] transition-all duration-700 ease-out relative">
-                  <CardMedia project={project} className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out" />
-                  
-                  {(project as any).video && (
+                <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] transition-all duration-500">
+                  {!(project as any).video ? (
+                    <CardMedia project={project} className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                  ) : (
                     <video
                       src={(project as any).video}
                       autoPlay
                       loop
                       muted
                       playsInline
-                      className="absolute inset-0 w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700 ease-out"
+                      className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 pointer-events-none"
                     />
                   )}
                 </div>
