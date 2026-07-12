@@ -1,5 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform, useSpring, useMotionTemplate, AnimatePresence } from "framer-motion";
+import { useNavigate } from "@tanstack/react-router";
 
 export const projects = [
   {
@@ -72,34 +73,46 @@ export const projects = [
 
 export const photographyProjects = [
   {
-    id: "p1",
-    title: "Portrait Series",
-    category: "Photography",
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=80",
+    id: "sunny",
+    title: "Sunny",
+    category: "Editorial",
+    image: "https://lh3.googleusercontent.com/d/1fim0sCojj-61FlZLE7GrqqL-L0CaV4xS=w800",
+    seriesId: "sunny",
   },
   {
-    id: "p2",
-    title: "Editorial Fashion",
-    category: "Photography",
-    image: "https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=1200&q=80",
+    id: "khaso",
+    title: "Khaso",
+    category: "Clothing Brand",
+    image: "https://lh3.googleusercontent.com/d/11p3l4cQ7Zx2kKW3aleO_2sl3xt7MD2e7=w800",
+    seriesId: "khaso",
   },
   {
-    id: "p3",
-    title: "Product Shoot",
-    category: "Photography",
-    image: "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=900&q=80",
+    id: "food",
+    title: "Food",
+    category: "Food & Beverage",
+    image: "https://lh3.googleusercontent.com/d/1gP4qa2IXMq_WFhkl_yonwYBP-gpTAgev=w800",
+    seriesId: "food",
   },
   {
-    id: "p4",
-    title: "Landscape Captures",
-    category: "Photography",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+    id: "urvashi",
+    title: "Urvashi Rautela",
+    category: "Editorial",
+    image: "https://lh3.googleusercontent.com/d/1aWst6S1_EPMRiLK2p_UajUsN4E9IS_Zo=w800",
+    seriesId: "urvashi",
   },
   {
-    id: "p5",
-    title: "Wedding Highlights",
-    category: "Photography",
-    image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1600&q=80",
+    id: "donear",
+    title: "Donear",
+    category: "Clothing Brand",
+    image: "https://lh3.googleusercontent.com/d/174CytmhkPI88k5k21qpjoBDPZdlBN4Me=w800",
+    seriesId: "donear",
+  },
+  {
+    id: "sunny-brand-shoot",
+    title: "Sunny Brand Shoot",
+    category: "Brand Campaign",
+    image: "https://lh3.googleusercontent.com/d/1jGiHCP8Gd3d8NY2sL-gYurSyEQJTtmtF=w800",
+    seriesId: "sunny-brand-shoot",
   },
   {
     id: "p6",
@@ -156,9 +169,17 @@ const CardMedia = ({ project, className }: { project: any, className: string }) 
         if (errorStage === 0 && ytMatch && ytMatch[1]) {
           setSrc(`https://img.youtube.com/vi/${ytMatch[1]}/hqdefault.jpg`);
           setErrorStage(1);
-        } else if (errorStage < 2) {
+        } else if (project.image?.includes('googleusercontent.com') || project.image?.includes('drive.google.com')) {
+          if (errorStage < 5) {
+            setTimeout(() => {
+              setSrc(`${project.image}&retry=${Date.now()}`);
+              setErrorStage(prev => prev + 1);
+            }, 1000 * (errorStage + 1));
+          } else {
+            setSrc(project.image);
+          }
+        } else {
           setSrc(project.image);
-          setErrorStage(2);
         }
       }}
     />
@@ -263,8 +284,23 @@ function ProjectItem({ project, index, total, scrollIndex }: any) {
 }
 
 export function FeaturedWork() {
-  const [activeTab, setActiveTab] = useState<'videography' | 'photography'>('videography');
+  const [activeTab, setActiveTab] = useState<'videography' | 'photography'>(() => {
+    if (typeof window !== 'undefined') {
+      const saved = sessionStorage.getItem('portfolio_tab');
+      if (saved === 'photography') return 'photography';
+    }
+    return 'videography';
+  });
+  
+  // Save to session storage whenever it changes
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      sessionStorage.setItem('portfolio_tab', activeTab);
+    }
+  }, [activeTab]);
+
   const activeProjects = activeTab === 'videography' ? projects : photographyProjects;
+  const navigate = useNavigate();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const total = activeProjects.length;
@@ -283,7 +319,7 @@ export function FeaturedWork() {
   const scrollIndex = useTransform(smoothProgress, [0, 1], [0, total - 1]);
 
   return (
-    <section className="relative w-full bg-transparent flex flex-col">
+    <section id="featured-work" className="relative w-full bg-transparent flex flex-col">
       
       {/* Normal Header for the FeaturedWork section */}
       <div className="relative w-full px-4 sm:px-5 md:px-8 lg:px-12 xl:px-16 pt-16 sm:pt-20 md:pt-32 z-30">
@@ -354,7 +390,14 @@ export function FeaturedWork() {
                   animate={{ y: [0, -12, 0] }}
                   transition={{ repeat: Infinity, duration: 4 + (idx % 3), ease: "easeInOut", delay: idx * 0.2 }}
                   whileHover={{ y: -24, transition: { duration: 0.4, ease: "easeOut" } }}
-                  onClick={() => (project as any).link && window.open((project as any).link, '_blank')}
+                  onClick={() => {
+                    const p = project as any;
+                    if (activeTab === 'photography' && p.seriesId) {
+                      navigate({ to: '/photography/$id', params: { id: p.seriesId } });
+                    } else if (p.link) {
+                      window.open(p.link, '_blank');
+                    }
+                  }}
                 >
                   <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] transition-all duration-500">
                     {!(project as any).video ? (
