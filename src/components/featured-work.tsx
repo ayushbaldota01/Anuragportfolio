@@ -3,10 +3,12 @@ import { motion, useScroll, useTransform, useSpring, useMotionTemplate } from "f
 
 export const projects = [
   {
-    id: "gq-varun",
-    title: "GQ x Varun Dhawan",
-    category: "Brand Campaign",
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=80",
+    id: "jw-marriott",
+    title: "JW Marriott Saviour Series",
+    category: "Hospitality",
+    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
+    link: "https://youtube.com/shorts/bKx8orCjPK0?si=VhMNE6q1jlQ8ANwa",
+    video: "/videos/gq-savior.mp4",
   },
   {
     id: "asian-paints",
@@ -25,18 +27,17 @@ export const projects = [
     video: "/videos/murder-mubarak.mp4",
   },
   {
-    id: "jw-marriott",
-    title: "JW Marriott Saviour Series",
-    category: "Hospitality",
-    image: "https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?auto=format&fit=crop&w=900&q=80",
-    link: "https://youtube.com/shorts/bKx8orCjPK0?si=VhMNE6q1jlQ8ANwa",
-    video: "/videos/gq-jw-marriott.mp4",
+    id: "gq-varun",
+    title: "GQ x Varun Dhawan",
+    category: "Brand Campaign",
+    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=80",
   },
   {
     id: "tira-beauty",
     title: "Tira Beauty x Kareena Kapoor",
     category: "Beauty Campaign",
     image: "https://images.unsplash.com/photo-1519046904884-53103b34b206?auto=format&fit=crop&w=1600&q=80",
+    video: "/videos/tira.mp4",
   },
   {
     id: "wedding-affairs",
@@ -46,17 +47,18 @@ export const projects = [
     link: "https://www.instagram.com/reel/DU3Pif8CCek/?igsh=MTNuczE2aTZ1ZThhNQ==",
   },
   {
-    id: "food-photography",
-    title: "Food Photography",
-    category: "Photography",
-    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
-    link: "https://www.instagram.com/p/DJJ9HC5Sb58/?igsh=MWk4YmU1bmhsdG1xMA==",
-  },
-  {
     id: "sunny-leone",
     title: "Sunny Leone x Times of India",
     category: "Editorial",
     image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80",
+    video: "/videos/sunny-leone.mp4",
+  },
+  {
+    id: "zouk",
+    title: "Zouk",
+    category: "Brand Campaign",
+    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80",
+    video: "/videos/zouk.mp4",
   },
   {
     id: "adds-karigars",
@@ -64,6 +66,7 @@ export const projects = [
     category: "Documentary",
     image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=1200&q=80",
     link: "https://youtu.be/Ne6kB9pRHTA?si=orXTioEZb95dLU24",
+    video: "/videos/karigars.mp4",
   }
 ];
 
