@@ -263,7 +263,7 @@ function ProjectItem({ project, index, total, scrollIndex }: any) {
 }
 
 export function FeaturedWork() {
-  const [activeTab, setActiveTab] = useState<'videography' | 'photography'>('photography');
+  const [activeTab, setActiveTab] = useState<'videography' | 'photography'>('videography');
   const activeProjects = activeTab === 'videography' ? projects : photographyProjects;
 
   const containerRef = useRef<HTMLDivElement>(null);
@@ -297,13 +297,13 @@ export function FeaturedWork() {
         {/* Toggle Button */}
         <div className="mt-8 sm:mt-12 flex items-center gap-2 bg-white/5 backdrop-blur-md border border-white/10 rounded-full p-1.5 w-max">
           <button
-            onClick={() => setActiveTab('photography')}
+            onClick={() => setActiveTab('videography')}
             className={`relative px-6 py-2.5 rounded-full text-xs sm:text-sm font-medium tracking-wide uppercase transition-colors z-10 ${
-              activeTab === 'photography' ? 'text-black' : 'text-white/60 hover:text-white'
+              activeTab === 'videography' ? 'text-black' : 'text-white/60 hover:text-white'
             }`}
           >
-            Photography
-            {activeTab === 'photography' && (
+            Videography
+            {activeTab === 'videography' && (
               <motion.div
                 layoutId="activeTabIndicator"
                 className="absolute inset-0 bg-white rounded-full -z-10"
@@ -312,13 +312,13 @@ export function FeaturedWork() {
             )}
           </button>
           <button
-            onClick={() => setActiveTab('videography')}
+            onClick={() => setActiveTab('photography')}
             className={`relative px-6 py-2.5 rounded-full text-xs sm:text-sm font-medium tracking-wide uppercase transition-colors z-10 ${
-              activeTab === 'videography' ? 'text-black' : 'text-white/60 hover:text-white'
+              activeTab === 'photography' ? 'text-black' : 'text-white/60 hover:text-white'
             }`}
           >
-            Videography
-            {activeTab === 'videography' && (
+            Photography
+            {activeTab === 'photography' && (
               <motion.div
                 layoutId="activeTabIndicator"
                 className="absolute inset-0 bg-white rounded-full -z-10"
