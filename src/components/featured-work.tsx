@@ -47,13 +47,7 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
     link: "https://www.instagram.com/reel/DU3Pif8CCek/?igsh=MTNuczE2aTZ1ZThhNQ==",
   },
-  {
-    id: "sunny-leone",
-    title: "Sunny Leone x Times of India",
-    category: "Editorial",
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80",
-    video: "/videos/sunny-leone.mp4",
-  },
+
   {
     id: "zouk",
     title: "Zouk",
@@ -76,29 +70,29 @@ export const photographyProjects = [
     id: "sunny",
     title: "Sunny",
     category: "Editorial",
-    image: "https://lh3.googleusercontent.com/d/1fim0sCojj-61FlZLE7GrqqL-L0CaV4xS=w800",
+    image: "/sunny-thumb.jpg",
     seriesId: "sunny",
   },
   {
     id: "khaso",
     title: "Khaso",
     category: "Clothing Brand",
-    image: "https://lh3.googleusercontent.com/d/11p3l4cQ7Zx2kKW3aleO_2sl3xt7MD2e7=w800",
+    image: "/khaso-thumb.jpg",
     seriesId: "khaso",
   },
   {
     id: "food",
     title: "Food",
     category: "Food & Beverage",
-    image: "https://lh3.googleusercontent.com/d/1gP4qa2IXMq_WFhkl_yonwYBP-gpTAgev=w800",
+    image: "/food-thumb.jpg",
     seriesId: "food",
   },
   {
-    id: "urvashi",
-    title: "Urvashi Rautela",
-    category: "Editorial",
-    image: "https://lh3.googleusercontent.com/d/1aWst6S1_EPMRiLK2p_UajUsN4E9IS_Zo=w800",
-    seriesId: "urvashi",
+    id: "wedding-affairs",
+    title: "The Wedding Affairs",
+    category: "Fashion & Wedding",
+    image: "/wedding-affairs-thumb.jpg",
+    seriesId: "wedding-affairs",
   },
   {
     id: "donear",
@@ -284,14 +278,17 @@ function ProjectItem({ project, index, total, scrollIndex }: any) {
 }
 
 export function FeaturedWork() {
-  const [activeTab, setActiveTab] = useState<'videography' | 'photography'>(() => {
+  const [activeTab, setActiveTab] = useState<'videography' | 'photography'>('videography');
+  
+  useEffect(() => {
     if (typeof window !== 'undefined') {
       const saved = sessionStorage.getItem('portfolio_tab');
-      if (saved === 'photography') return 'photography';
+      if (saved === 'photography') {
+        setActiveTab('photography');
+      }
     }
-    return 'videography';
-  });
-  
+  }, []);
+
   // Save to session storage whenever it changes
   useEffect(() => {
     if (typeof window !== 'undefined') {
@@ -316,7 +313,7 @@ export function FeaturedWork() {
     mass: 0.1,
   });
 
-  const scrollIndex = useTransform(smoothProgress, [0, 1], [0, total - 1]);
+  const scrollIndex = useTransform(smoothProgress, (v) => v * (total - 1));
 
   return (
     <section id="featured-work" className="relative w-full bg-transparent flex flex-col">
