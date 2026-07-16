@@ -119,7 +119,7 @@ export function MechanicalOdometerCounter({
   fontFamily = "inherit",
   fontSize = "1em",
   fontWeight = 700,
-  lineHeight = 1,
+  lineHeight = 0.9,
   color = "inherit",
   style,
   className,
@@ -186,7 +186,7 @@ export function MechanicalOdometerCounter({
     return { toDigit, fromDigit, isAppearing };
   });
 
-  const cellH = typeof fontSize === "number" ? fontSize * lineHeight : fontSize;
+  const cellH = typeof fontSize === "number" ? fontSize * lineHeight : `calc(${fontSize} * ${lineHeight})`;
   const sepIndices = thousandSeparator ? getSepIndices(toLen) : new Set<number>();
   const resolvedPrefix = useSamePrefixColor ? color : prefixColor;
   const resolvedSuffix = useSameSuffixColor ? color : suffixColor;

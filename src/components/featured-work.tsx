@@ -32,6 +32,7 @@ export const projects = [
     title: "GQ x Varun Dhawan",
     category: "Brand Campaign",
     image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1400&q=80",
+    video: "/videos/gq-varun.mp4",
   },
   {
     id: "tira-beauty",
@@ -46,6 +47,7 @@ export const projects = [
     category: "Fashion & Wedding",
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
     link: "https://www.instagram.com/reel/DU3Pif8CCek/?igsh=MTNuczE2aTZ1ZThhNQ==",
+    video: "/wedding-affairs.mp4",
   },
 
   {
@@ -62,6 +64,13 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=1200&q=80",
     link: "https://youtu.be/Ne6kB9pRHTA?si=orXTioEZb95dLU24",
     video: "/videos/karigars.mp4",
+  },
+  {
+    id: "gaming",
+    title: "Gaming Showcase",
+    category: "Gaming",
+    image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
+    video: "/videos/gaming.mp4",
   }
 ];
 
@@ -98,7 +107,7 @@ export const photographyProjects = [
     id: "donear",
     title: "Donear",
     category: "Clothing Brand",
-    image: "https://lh3.googleusercontent.com/d/174CytmhkPI88k5k21qpjoBDPZdlBN4Me=w800",
+    image: "/donear-thumb.png",
     seriesId: "donear",
   },
   {
@@ -113,24 +122,6 @@ export const photographyProjects = [
     title: "Street Photography",
     category: "Photography",
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
-  },
-  {
-    id: "p7",
-    title: "Abstract Art",
-    category: "Photography",
-    image: "https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: "p8",
-    title: "Architecture",
-    category: "Photography",
-    image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=1200&q=80",
-  },
-  {
-    id: "p9",
-    title: "Nature Trails",
-    category: "Photography",
-    image: "https://images.unsplash.com/photo-1606813907291-d86efa9b94db?auto=format&fit=crop&w=1200&q=80",
   },
 ];
 
