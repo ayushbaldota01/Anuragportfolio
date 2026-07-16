@@ -50,19 +50,19 @@ function About() {
       <section className="mt-16 sm:mt-24 md:mt-32 grid grid-cols-1 gap-4 sm:gap-6 sm:grid-cols-3">
         <div className="py-8 sm:py-12 px-4 sm:px-6 bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/10">
           <h3 className="font-serif text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4 text-white flex justify-center items-center">
-            <MechanicalOdometerCounter to={100} fontSize={60} />+
+            <MechanicalOdometerCounter to={100} />+
           </h3>
           <p className="text-xs sm:text-sm tracking-widest uppercase text-muted-foreground">Projects delivered</p>
         </div>
         <div className="py-8 sm:py-12 px-4 sm:px-6 bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/10">
           <h3 className="font-serif text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4 text-white flex justify-center items-center">
-            <MechanicalOdometerCounter to={50} fontSize={60} />+
+            <MechanicalOdometerCounter to={50} />+
           </h3>
           <p className="text-xs sm:text-sm tracking-widest uppercase text-muted-foreground">Brands Collaborated</p>
         </div>
         <div className="py-8 sm:py-12 px-4 sm:px-6 bg-white/5 border border-white/10 rounded-2xl sm:rounded-3xl text-center transition-all duration-300 hover:-translate-y-2 hover:bg-white/10">
           <h3 className="font-serif text-4xl sm:text-5xl md:text-6xl mb-3 sm:mb-4 text-white flex justify-center items-center">
-            <MechanicalOdometerCounter to={5} fontSize={60} />+
+            <MechanicalOdometerCounter to={5} />+
           </h3>
           <p className="text-xs sm:text-sm tracking-widest uppercase text-muted-foreground">Years of Creative Experience</p>
         </div>

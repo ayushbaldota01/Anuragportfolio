@@ -25,8 +25,8 @@ interface DigitColumnProps {
   toDigit: number;
   direction: "up" | "down";
   randomOffset: number;
-  cellHeight: number;
-  fontSize: number;
+  cellHeight: number | string;
+  fontSize: number | string;
   fontWeight: number;
   fontFamily: string;
   color: string;
@@ -39,8 +39,8 @@ interface DigitColumnProps {
 function DigitColumn({ fromDigit, toDigit, direction, randomOffset, cellHeight, fontSize, fontWeight, fontFamily, color, shouldAnimate, delay, duration, easing }: DigitColumnProps) {
   const strip = useMemo(() => buildStrip(fromDigit, toDigit, randomOffset), [fromDigit, toDigit, randomOffset]);
   const displayStrip = direction === "up" ? strip : [...strip].reverse();
-  const finalY = direction === "up" ? `calc(-100% + ${cellHeight}px)` : "0%";
-  const initialY = direction === "up" ? "0%" : `calc(-100% + ${cellHeight}px)`;
+  const finalY = direction === "up" ? `calc(-100% + ${typeof cellHeight === 'number' ? cellHeight + 'px' : cellHeight})` : "0%";
+  const initialY = direction === "up" ? "0%" : `calc(-100% + ${typeof cellHeight === 'number' ? cellHeight + 'px' : cellHeight})`;
 
   return (
     <div style={{ height: cellHeight, overflow: "hidden", display: "inline-flex", alignItems: "flex-start", flexShrink: 0 }}>
@@ -84,7 +84,7 @@ interface MechanicalOdometerCounterProps {
   slotRevealOffset?: number;
   digitGap?: number;
   fontFamily?: string;
-  fontSize?: number;
+  fontSize?: number | string;
   fontWeight?: number;
   lineHeight?: number;
   color?: string;
@@ -117,7 +117,7 @@ export function MechanicalOdometerCounter({
   slotRevealOffset = 0.2,
   digitGap = 2,
   fontFamily = "inherit",
-  fontSize = 60,
+  fontSize = "1em",
   fontWeight = 700,
   lineHeight = 1,
   color = "inherit",
@@ -186,7 +186,7 @@ export function MechanicalOdometerCounter({
     return { toDigit, fromDigit, isAppearing };
   });
 
-  const cellH = fontSize * lineHeight;
+  const cellH = typeof fontSize === "number" ? fontSize * lineHeight : fontSize;
   const sepIndices = thousandSeparator ? getSepIndices(toLen) : new Set<number>();
   const resolvedPrefix = useSamePrefixColor ? color : prefixColor;
   const resolvedSuffix = useSameSuffixColor ? color : suffixColor;
@@ -204,7 +204,7 @@ export function MechanicalOdometerCounter({
     flexShrink: 0
   });
 
-  const revealTarget = `${fontSize}px`;
+  const revealTarget = typeof fontSize === "number" ? `${fontSize}px` : fontSize;
 
   return (
     <div className={className} ref={ref} style={{ display: "inline-flex", justifyContent: "center", alignItems: "center", overflow: "visible", ...style }} {...rest}>
