@@ -117,12 +117,7 @@ export const photographyProjects = [
     image: "https://lh3.googleusercontent.com/d/1jGiHCP8Gd3d8NY2sL-gYurSyEQJTtmtF=w800",
     seriesId: "sunny-brand-shoot",
   },
-  {
-    id: "p6",
-    title: "Street Photography",
-    category: "Photography",
-    image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
-  },
+
 ];
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
