@@ -48,7 +48,7 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
     link: "https://www.instagram.com/reel/DU3Pif8CCek/?igsh=MTNuczE2aTZ1ZThhNQ==",
     video: "/wedding-affairs.mp4",
-    imageClass: "object-top",
+    imageClass: "object-[center_18%]",
   },
 
   {
@@ -103,7 +103,7 @@ export const photographyProjects = [
     category: "Fashion & Wedding",
     image: "/wedding-affairs-thumb.jpeg",
     seriesId: "wedding-affairs",
-    imageClass: "object-top",
+    imageClass: "object-[center_18%]",
   },
   {
     id: "donear",
