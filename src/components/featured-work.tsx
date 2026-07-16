@@ -112,13 +112,7 @@ export const photographyProjects = [
     image: "/donear-thumb.png",
     seriesId: "donear",
   },
-  {
-    id: "sunny-brand-shoot",
-    title: "Sunny Brand Shoot",
-    category: "Brand Campaign",
-    image: "https://lh3.googleusercontent.com/d/1jGiHCP8Gd3d8NY2sL-gYurSyEQJTtmtF=w800",
-    seriesId: "sunny-brand-shoot",
-  },
+
 
 ];
 
