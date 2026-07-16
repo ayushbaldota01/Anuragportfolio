@@ -146,22 +146,35 @@ function PhotographyGallery() {
         })}
       </motion.div>
 
-      {/* View All on Drive CTA */}
+      {/* View All on Drive CTA & Back Button */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.5 }}
-        className="max-w-[1400px] mx-auto mt-16 text-center"
+        className="max-w-[1400px] mx-auto mt-16 flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 px-4"
       >
         <a
           href={series.driveFolder}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm font-medium"
+          className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-white/5 backdrop-blur-md border border-white/10 rounded-full text-white/80 hover:text-white hover:bg-white/10 transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm font-medium w-full sm:w-auto"
         >
           View Full Collection on Drive
           <span>↗</span>
         </a>
+        <Link
+          to="/"
+          hash="featured-work"
+          onClick={() => {
+            if (typeof window !== 'undefined') {
+              sessionStorage.setItem('portfolio_tab', 'photography');
+            }
+          }}
+          className="inline-flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-white/10 rounded-full text-white/60 hover:text-white hover:bg-white/5 transition-all duration-300 uppercase tracking-widest text-xs sm:text-sm font-medium w-full sm:w-auto"
+        >
+          <span>←</span>
+          Back to Photography
+        </Link>
       </motion.div>
     </div>
   );
