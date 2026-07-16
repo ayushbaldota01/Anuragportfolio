@@ -48,6 +48,7 @@ export const projects = [
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
     link: "https://www.instagram.com/reel/DU3Pif8CCek/?igsh=MTNuczE2aTZ1ZThhNQ==",
     video: "/wedding-affairs.mp4",
+    imageClass: "object-top",
   },
 
   {
@@ -102,6 +103,7 @@ export const photographyProjects = [
     category: "Fashion & Wedding",
     image: "/wedding-affairs-thumb.jpeg",
     seriesId: "wedding-affairs",
+    imageClass: "object-top",
   },
   {
     id: "donear",
@@ -244,7 +246,7 @@ function ProjectItem({ project, index, total, scrollIndex }: any) {
       }}
     >
       <div className="relative w-[70vw] sm:w-[50vw] md:w-[32vw] min-w-[220px] max-w-[420px] aspect-[4/5] overflow-hidden rounded-xl bg-black">
-        <CardMedia project={project} className="w-full h-full object-cover" />
+        <CardMedia project={project} className={`w-full h-full object-cover ${project.imageClass || ''}`} />
         <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
       </div>
 
@@ -384,7 +386,7 @@ export function FeaturedWork() {
                 >
                   <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] transition-all duration-500">
                     {!(project as any).video ? (
-                      <CardMedia project={project} className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500" />
+                      <CardMedia project={project} className={`w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ${(project as any).imageClass || ''}`} />
                     ) : (
                       <video
                         src={(project as any).video}
@@ -392,7 +394,7 @@ export function FeaturedWork() {
                         loop
                         muted
                         playsInline
-                        className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 pointer-events-none"
+                        className={`w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 pointer-events-none ${(project as any).imageClass || ''}`}
                       />
                     )}
                   </div>
