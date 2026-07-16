@@ -67,7 +67,7 @@ export const projects = [
   },
   {
     id: "gaming",
-    title: "Gaming Showcase",
+    title: "Zero latency montage edit",
     category: "Gaming",
     image: "https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=1200&q=80",
     video: "/videos/gaming.mp4",
