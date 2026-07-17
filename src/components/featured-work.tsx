@@ -287,7 +287,7 @@ export function FeaturedWork() {
   const tunnelProjects = [
     projects.find(p => p.id === "adds-karigars"),
     projects.find(p => p.id === "jw-marriott"),
-    projects.find(p => p.id === "gq-varun"),
+    projects.find(p => p.id === "netflix"),
     photographyProjects.find(p => p.id === "donear"),
     photographyProjects.find(p => p.id === "wedding-affairs"),
     photographyProjects.find(p => p.id === "khaso")
