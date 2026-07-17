@@ -29,7 +29,7 @@ function About() {
 
       {/* Mission Section - Image on left, text on right, specific text styling */}
       <section className="mt-16 sm:mt-24 md:mt-32 grid gap-8 sm:gap-12 md:grid-cols-2 items-center">
-        <div className="aspect-square bg-white/5 rounded-3xl border border-white/10 overflow-hidden relative group order-last md:order-first">
+        <div className="aspect-[3/4] bg-white/5 rounded-3xl border border-white/10 overflow-hidden relative group order-last md:order-first">
            <img src="/about-image.jpg" alt="About" className="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105" />
            <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>

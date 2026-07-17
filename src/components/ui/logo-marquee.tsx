@@ -2,68 +2,86 @@ import { motion } from "framer-motion";
 
 const logoData = [
   {
-    name: "WIRED",
+    name: "Upgrad",
     style: {
-      fontFamily: "Courier New, Courier, monospace",
-      fontWeight: 900,
-      letterSpacing: "-0.05em",
+      fontFamily: "system-ui, -apple-system, sans-serif",
+      fontWeight: 800,
+      letterSpacing: "-0.02em",
     },
-    className: "text-lg sm:text-xl md:text-2xl"
+    className: "text-xl sm:text-2xl md:text-3xl"
   },
   {
-    name: "billboard",
+    name: "Zouk",
     style: {
       fontFamily: "'Bodoni Moda', serif",
       fontWeight: 900,
-      letterSpacing: "-0.06em",
+      letterSpacing: "0.1em",
     },
-    className: "text-lg sm:text-xl md:text-2xl lowercase"
+    className: "text-xl sm:text-2xl md:text-3xl uppercase"
   },
   {
-    name: "COMPLEX",
+    name: "NETFLIX",
     style: {
       fontFamily: "system-ui, -apple-system, sans-serif",
       fontWeight: 900,
       letterSpacing: "0.15em",
     },
-    className: "text-sm sm:text-base md:text-lg uppercase"
+    className: "text-lg sm:text-xl md:text-2xl uppercase"
   },
   {
-    name: "Forbes",
+    name: "Hindustan Unilever",
     style: {
       fontFamily: "'Playfair Display', serif",
-      fontWeight: 800,
-      letterSpacing: "-0.02em",
+      fontWeight: 700,
+      letterSpacing: "-0.01em",
     },
-    className: "text-lg sm:text-xl md:text-2xl"
+    className: "text-base sm:text-lg md:text-xl"
   },
   {
-    name: "Rolling Stone",
+    name: "GQ",
     style: {
       fontFamily: "'Bodoni Moda', serif",
       fontWeight: 900,
-      fontStyle: "italic" as const,
       letterSpacing: "-0.05em",
     },
-    className: "text-lg sm:text-xl md:text-2xl"
+    className: "text-2xl sm:text-3xl md:text-4xl"
   },
   {
-    name: "VARIETY",
+    name: "Tira Beauty",
     style: {
       fontFamily: "'Bodoni Moda', serif",
       fontWeight: 400,
-      letterSpacing: "0.25em",
+      fontStyle: "italic" as const,
+      letterSpacing: "0.05em",
     },
-    className: "text-base sm:text-lg md:text-xl uppercase"
+    className: "text-xl sm:text-2xl md:text-3xl"
   },
   {
-    name: "W",
+    name: "Donear",
+    style: {
+      fontFamily: "system-ui, -apple-system, sans-serif",
+      fontWeight: 700,
+      letterSpacing: "0.2em",
+    },
+    className: "text-lg sm:text-xl md:text-2xl uppercase"
+  },
+  {
+    name: "Wedding Affairs Magazine",
+    style: {
+      fontFamily: "'Playfair Display', serif",
+      fontWeight: 400,
+      letterSpacing: "0.02em",
+    },
+    className: "text-base sm:text-lg md:text-xl"
+  },
+  {
+    name: "Miss Universe",
     style: {
       fontFamily: "'Bodoni Moda', serif",
-      fontWeight: 900,
-      letterSpacing: "-0.08em",
+      fontWeight: 600,
+      letterSpacing: "0.1em",
     },
-    className: "text-xl sm:text-2xl md:text-3xl uppercase"
+    className: "text-lg sm:text-xl md:text-2xl uppercase"
   }
 ];
 
