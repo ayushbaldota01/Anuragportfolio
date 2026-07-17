@@ -282,7 +282,18 @@ export function FeaturedWork() {
   const navigate = useNavigate();
 
   const containerRef = useRef<HTMLDivElement>(null);
-  const total = activeProjects.length;
+  const gridTotal = activeProjects.length;
+
+  const tunnelProjects = [
+    projects.find(p => p.id === "adds-karigars"),
+    projects.find(p => p.id === "jw-marriott"),
+    projects.find(p => p.id === "gq-varun"),
+    photographyProjects.find(p => p.id === "donear"),
+    photographyProjects.find(p => p.id === "wedding-affairs"),
+    photographyProjects.find(p => p.id === "khaso")
+  ].filter(Boolean);
+  
+  const tunnelTotal = tunnelProjects.length;
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -295,7 +306,9 @@ export function FeaturedWork() {
     mass: 0.1,
   });
 
-  const scrollIndex = useTransform(smoothProgress, (v) => v * (total - 1));
+  const scrollIndex = useTransform(smoothProgress, (v) => v * (tunnelTotal - 1));
+
+  const imageScaleClass = activeTab === 'photography' ? 'scale-[0.85] group-hover:scale-95' : 'group-hover:scale-105';
 
   return (
     <section id="featured-work" className="relative w-full bg-transparent flex flex-col">
@@ -380,7 +393,7 @@ export function FeaturedWork() {
                 >
                   <div className="aspect-[3/4] w-full overflow-hidden rounded-2xl bg-black shadow-[0_20px_60px_rgba(0,0,0,0.6)] group-hover:shadow-[0_40px_80px_rgba(0,0,0,0.8)] transition-all duration-500">
                     {!(project as any).video ? (
-                      <CardMedia project={project} className={`w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 ${(project as any).imageClass || ''}`} />
+                      <CardMedia project={project} className={`w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-all duration-500 ${imageScaleClass} ${(project as any).imageClass || ''}`} />
                     ) : (
                       <video
                         src={(project as any).video}
@@ -388,7 +401,7 @@ export function FeaturedWork() {
                         loop
                         muted
                         playsInline
-                        className={`w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500 pointer-events-none ${(project as any).imageClass || ''}`}
+                        className={`w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-all duration-500 pointer-events-none ${imageScaleClass} ${(project as any).imageClass || ''}`}
                       />
                     )}
                   </div>
@@ -407,26 +420,26 @@ export function FeaturedWork() {
       <div
         ref={containerRef}
         className="relative w-full"
-        style={{ height: `${total * 100}vh` }}
+        style={{ height: `${tunnelTotal * 100}vh` }}
       >
         <div className="sticky top-0 left-0 w-full h-screen overflow-hidden pointer-events-none">
           
           {/* Project Frames */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeTab}
+              key="tunnel"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.5 }}
               className="absolute inset-0"
             >
-              {activeProjects.map((project, index) => (
+              {tunnelProjects.map((project, index) => (
                 <ProjectItem
-                  key={project.id}
+                  key={project?.id || index}
                   project={project}
                   index={index}
-                  total={total}
+                  total={tunnelTotal}
                   scrollIndex={scrollIndex}
                 />
               ))}

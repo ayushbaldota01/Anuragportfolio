@@ -30,10 +30,8 @@ function About() {
       {/* Mission Section - Image on left, text on right, specific text styling */}
       <section className="mt-16 sm:mt-24 md:mt-32 grid gap-8 sm:gap-12 md:grid-cols-2 items-center">
         <div className="aspect-square bg-white/5 rounded-3xl border border-white/10 overflow-hidden relative group order-last md:order-first">
-           <div className="absolute inset-0 bg-gradient-to-br from-white/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-           <div className="absolute inset-0 flex items-center justify-center">
-             <span className="text-white/20 font-serif italic text-xl">Our Vision</span>
-           </div>
+           <img src="/about-image.jpg" alt="About" className="w-full h-full object-cover grayscale transition-transform duration-700 group-hover:scale-105" />
+           <div className="absolute inset-0 bg-gradient-to-br from-black/50 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
         </div>
         <div className="pl-0 md:pl-8 lg:pl-16">
           <h2 className="font-serif text-3xl sm:text-4xl md:text-5xl lg:text-6xl mb-6 sm:mb-8 leading-[1.1]">
