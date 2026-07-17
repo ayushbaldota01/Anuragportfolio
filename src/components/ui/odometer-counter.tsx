@@ -50,7 +50,7 @@ function DigitColumn({ fromDigit, toDigit, direction, randomOffset, cellHeight, 
         transition={{ duration, delay, ease: (FM_EASINGS as any)[easing] ?? FM_EASINGS.smooth }}
       >
         {displayStrip.map((digit, i) => (
-          <div key={i} style={{ height: cellHeight, display: "flex", alignItems: "center", justifyContent: "center", fontSize, fontWeight, fontFamily, color, lineHeight: 1, userSelect: "none" }}>
+          <div key={i} style={{ height: cellHeight, display: "flex", alignItems: "center", justifyContent: "center", fontSize, fontWeight, fontFamily, color, lineHeight: "normal", userSelect: "none" }}>
             {digit}
           </div>
         ))}
@@ -119,7 +119,7 @@ export function MechanicalOdometerCounter({
   fontFamily = "inherit",
   fontSize = "1em",
   fontWeight = 700,
-  lineHeight = 0.9,
+  lineHeight = 1.2,
   color = "inherit",
   style,
   className,
