@@ -51,6 +51,16 @@ const khasoIds = [
   "1HEjfiXjBanryBsny_DqgiUs3v8TD9Fe0",
   "1PPCogoCFrw3i1X0VGOBHa19r38AqcQha",
   "12a2GSMcv_Yz4voB62gRamQ1MIHeekKap",
+  "13Ty9mT47EFRqgup_YVij5mgokd1qOcPk",
+  "1u5XHemE9XOzpsDxjzO4KbtQbIJZJDFdh",
+  "1pizF2yxNjZqxNSWrvSiW59NVpTzMJV2-",
+  "1IaHylmggI7cgM7wBV7kqJwmN2l9ul7nE",
+  "1HXG1WffHDu66YtXfCrWLAXZZe0kUN_xb",
+  "1O5U5ggkRx3mcG6z0x0VcuAbgXYA7W_MH",
+  "1u3IqwWeKcR2EUiSyWWvF1KGy9kSBRsCF",
+  "11PbO5wpIu2Ym2XBLpE4TxBxDGWipJA5R",
+  "1_UbVFyXtNvh5hzAPLfl5lktoldiSYnNN",
+  "1I_VOVkWL_i38dmn0oRmMBCE68lVyeNr4",
 ];
 
 const foodIds = [
@@ -120,6 +130,36 @@ const sunnyBrandShootIds = [
   "1dLrCqkrFoozLiEIpv3s6AsXUF0BJKnbp",
 ];
 
+const poojaChopraIds = [
+  "1iHeKO-EsNZzcn-Ngu0ICW62Cy_Fc8cgc",
+  "1lS_OE8IKD4kWoR7afzkslN49s4TfxrSv",
+  "1uXtiBPB4HtArivYFzl9ECKygSLlVb_N_",
+  "1vq7MT4pWTVNPgygs46AWpsHH0RrtU7Hv",
+  "1taiCrT0oIByP_Dk_oXp_lUfYhnpnt2BP",
+  "1tX3Duh95Ol7T9Ku788EHUI2liUhCAx3l",
+  "1A8iNd2VJw3xmZBS4K1PYC1MCRh7kx0Wp",
+  "1Eig1UNDpFfxuGdrS0WWk_1MARHb5zA1Y",
+  "1m9NF3Bf63fY6tHkcMZBl7OCg4QOAmxZa",
+  "1RBlnRfZX_6F8GdgMjv7cS4-UwsJwNRsY",
+  "1D5oD63MnN2ilWMohKulwNEXsFX18auKW",
+  "1WffJGpzZ6q0RfA08gHNrjk7EEPJtjy7i",
+];
+
+const spiritualIds = [
+  "1bnOUaPbHBVRvF1bqDxtAGkkFL8BsuFJ1",
+  "1ZPsTZO16BmRlrTkIZxHnqeHdGC7gI0zY",
+  "1feC5AkZ_BsplDFNj-fVIlH8mOmLYWls7",
+  "1cR6-ku5BEu88aX-1x9obR9dGTuThKfOq",
+  "11uJmyp_XZnNCPxQESnnUab6Fa-UlcJfC",
+  "12G8c4zePUOif813js9xTqE8o3-dTUcQy",
+  "1IJYTVKU22832ogLtUIIgWomZhdFaEics",
+  "17RivoavTq3vMNptX1KR4SRV97QkmjoJ4",
+  "1XKFyuk5u2iJl-6BUuD7zWaIVu2Vcv7Oq",
+  "1DUjzI-peEXSp-LzSEFt_4wk-BUk6H1yP",
+  "1vHmE1iR-ldhy70BbVKJOuhy7yHDTnb1B",
+  "1tb5OupFrVXKVLNZmJfZstqkwaPeMZ4Y0",
+];
+
 export const photographySeries: PhotoSeries[] = [
   {
     id: "sunny",
@@ -138,8 +178,8 @@ export const photographySeries: PhotoSeries[] = [
     title: "Khaso",
     category: "Clothing Brand",
     coverImage: drivePreview(khasoIds[0]),
-    driveFolder: "https://drive.google.com/drive/folders/1CFFS0Feor8yT6W_47n3j7T4xYhxnNGs4", // Using placeholder until provided
-    images: khasoIds.slice(0, 10).map((fid, i) => ({
+    driveFolder: "https://drive.google.com/drive/folders/1hJIuQMtSF0G8ylpCxeWd8Mrm-u6v0-Sv?usp=sharing", // Using placeholder until provided
+    images: khasoIds.slice(0, 25).map((fid, i) => ({
       id: `khaso-${i + 1}`,
       previewUrl: drivePreview(fid),
       driveLink: driveView(fid),
@@ -189,6 +229,30 @@ export const photographySeries: PhotoSeries[] = [
     driveFolder: "https://drive.google.com/drive/folders/1CFFS0Feor8yT6W_47n3j7T4xYhxnNGs4", // Placeholder
     images: sunnyBrandShootIds.slice(0, 10).map((fid, i) => ({
       id: `sunny-brand-${i + 1}`,
+      previewUrl: drivePreview(fid),
+      driveLink: driveView(fid),
+    })),
+  },
+  {
+    id: "spiritual-life",
+    title: "The Spiritual Life",
+    category: "Editorial",
+    coverImage: drivePreview(spiritualIds[0]),
+    driveFolder: "https://drive.google.com/drive/folders/1I2liyyVNGWIQHT3raBJFD0UWDFIWFqrU?usp=sharing",
+    images: spiritualIds.slice(0, 12).map((fid, i) => ({
+      id: `spiritual-${i + 1}`,
+      previewUrl: drivePreview(fid),
+      driveLink: driveView(fid),
+    })),
+  },
+  {
+    id: "pooja-chopra",
+    title: "Pooja Chopra",
+    category: "Editorial",
+    coverImage: drivePreview(poojaChopraIds[0]),
+    driveFolder: "https://drive.google.com/drive/folders/140HFXPsp4Vverl9uvF6T_01FIoRaTF-W?usp=sharing",
+    images: poojaChopraIds.slice(0, 12).map((fid, i) => ({
+      id: `pooja-${i + 1}`,
       previewUrl: drivePreview(fid),
       driveLink: driveView(fid),
     })),

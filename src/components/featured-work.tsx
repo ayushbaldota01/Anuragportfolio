@@ -112,8 +112,20 @@ export const photographyProjects = [
     image: "/donear-thumb.png",
     seriesId: "donear",
   },
-
-
+  {
+    id: "spiritual-life",
+    title: "The Spiritual Life",
+    category: "Editorial",
+    image: `https://lh3.googleusercontent.com/d/1bnOUaPbHBVRvF1bqDxtAGkkFL8BsuFJ1=w800`,
+    seriesId: "spiritual-life",
+  },
+  {
+    id: "pooja-chopra",
+    title: "Pooja Chopra",
+    category: "Editorial",
+    image: `https://lh3.googleusercontent.com/d/1iHeKO-EsNZzcn-Ngu0ICW62Cy_Fc8cgc=w800`,
+    seriesId: "pooja-chopra",
+  },
 ];
 
 // ── Helpers ──────────────────────────────────────────────────────────────────
