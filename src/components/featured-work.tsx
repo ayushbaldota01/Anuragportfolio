@@ -1,6 +1,6 @@
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform, useSpring, useMotionTemplate, AnimatePresence } from "framer-motion";
-import { useNavigate } from "@tanstack/react-router";
+import { motion, useScroll, useTransform, useSpring, useMotionTemplate, AnimatePresence, useInView } from "framer-motion";
+import { useNavigate, useRouter } from "@tanstack/react-router";
 
 export const projects = [
   {
@@ -197,6 +197,32 @@ const ThumbnailImage = ({ project, className }: { project: any; className: strin
   );
 };
 
+// ── SmartVideo ───────────────────────────────────────────────────────────────
+const SmartVideo = ({ src, className }: { src: string; className: string }) => {
+  const ref = useRef<HTMLVideoElement>(null);
+  const isInView = useInView(ref, { margin: "200px 0px" });
+
+  useEffect(() => {
+    if (!ref.current) return;
+    if (isInView) {
+      ref.current.play().catch(() => {});
+    } else {
+      ref.current.pause();
+    }
+  }, [isInView, src]);
+
+  return (
+    <video
+      ref={ref}
+      src={src}
+      loop
+      muted
+      playsInline
+      className={className}
+    />
+  );
+};
+
 function ProjectItem({ project, index, total, scrollIndex }: any) {
   const isLeft = index % 2 === 0;
 
@@ -292,6 +318,7 @@ export function FeaturedWork() {
 
   const activeProjects = activeTab === 'videography' ? projects : photographyProjects;
   const navigate = useNavigate();
+  const router = useRouter();
 
   const containerRef = useRef<HTMLDivElement>(null);
   const gridTotal = activeProjects.length;
@@ -394,6 +421,12 @@ export function FeaturedWork() {
                   animate={{ y: [0, -12, 0] }}
                   transition={{ repeat: Infinity, duration: 4 + (idx % 3), ease: "easeInOut", delay: idx * 0.2 }}
                   whileHover={{ y: -24, transition: { duration: 0.4, ease: "easeOut" } }}
+                  onMouseEnter={() => {
+                    const p = project as any;
+                    if (activeTab === 'photography' && p.seriesId) {
+                      router.preloadRoute({ to: '/photography/$id', params: { id: p.seriesId } }).catch(() => {});
+                    }
+                  }}
                   onClick={() => {
                     const p = project as any;
                     if (activeTab === 'photography' && p.seriesId) {
@@ -407,12 +440,8 @@ export function FeaturedWork() {
                     {!(project as any).video ? (
                       <CardMedia project={project} className={`w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-all duration-500 ${imageScaleClass} ${(project as any).imageClass || ''}`} />
                     ) : (
-                      <video
+                      <SmartVideo
                         src={(project as any).video}
-                        autoPlay
-                        loop
-                        muted
-                        playsInline
                         className={`w-full h-full object-cover opacity-85 group-hover:opacity-100 transition-all duration-500 pointer-events-none ${imageScaleClass} ${(project as any).imageClass || ''}`}
                       />
                     )}

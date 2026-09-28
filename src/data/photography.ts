@@ -134,15 +134,13 @@ const poojaChopraIds = [
   "1iHeKO-EsNZzcn-Ngu0ICW62Cy_Fc8cgc",
   "1lS_OE8IKD4kWoR7afzkslN49s4TfxrSv",
   "1uXtiBPB4HtArivYFzl9ECKygSLlVb_N_",
-  "1vq7MT4pWTVNPgygs46AWpsHH0RrtU7Hv",
   "1taiCrT0oIByP_Dk_oXp_lUfYhnpnt2BP",
-  "1tX3Duh95Ol7T9Ku788EHUI2liUhCAx3l",
   "1A8iNd2VJw3xmZBS4K1PYC1MCRh7kx0Wp",
   "1Eig1UNDpFfxuGdrS0WWk_1MARHb5zA1Y",
   "1m9NF3Bf63fY6tHkcMZBl7OCg4QOAmxZa",
-  "1RBlnRfZX_6F8GdgMjv7cS4-UwsJwNRsY",
   "1D5oD63MnN2ilWMohKulwNEXsFX18auKW",
-  "1WffJGpzZ6q0RfA08gHNrjk7EEPJtjy7i",
+  "1mvzucNG_iNNllW7VDANQD-tYnqxbFxNW",
+  "1XvjZJse7TCyChLr4PfMgchYkoLHffgUi",
 ];
 
 const spiritualIds = [
