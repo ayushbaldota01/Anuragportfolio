@@ -200,7 +200,7 @@ export const photographySeries: PhotoSeries[] = [
     title: "Urvashi Rautela x Wedding Affairs",
     category: "Editorial",
     coverImage: drivePreview(urvashiIds[0]),
-    driveFolder: "https://drive.google.com/drive/folders/1CFFS0Feor8yT6W_47n3j7T4xYhxnNGs4", // Placeholder
+    driveFolder: "https://drive.google.com/drive/folders/18NPrH39MMQrubnNR5NmJItZldHXYOr7O",
     images: urvashiIds.slice(0, 10).map((fid, i) => ({
       id: `urvashi-${i + 1}`,
       previewUrl: drivePreview(fid),

@@ -46,7 +46,7 @@ export const projects = [
     title: "Wedding Affairs x Urvashi",
     category: "Fashion & Wedding",
     image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80",
-    link: "https://www.instagram.com/reel/DU3Pif8CCek/?igsh=MTNuczE2aTZ1ZThhNQ==",
+    link: "https://drive.google.com/drive/folders/18NPrH39MMQrubnNR5NmJItZldHXYOr7O",
     video: "/wedding-affairs.mp4",
     imageClass: "object-[center_18%]",
   },
