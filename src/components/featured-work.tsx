@@ -102,7 +102,7 @@ export const photographyProjects = [
     title: "The Wedding Affairs",
     category: "Fashion & Wedding",
     image: "/wedding-affairs-thumb.jpeg",
-    link: "https://drive.google.com/drive/folders/18NPrH39MMQrubnNR5NmJItZldHXYOr7O",
+    externalLink: "https://drive.google.com/drive/folders/18NPrH39MMQrubnNR5NmJItZldHXYOr7O",
     imageClass: "object-[center_18%]",
   },
   {
@@ -429,7 +429,9 @@ export function FeaturedWork() {
                   }}
                   onClick={() => {
                     const p = project as any;
-                    if (activeTab === 'photography' && p.seriesId) {
+                    if (p.externalLink) {
+                      window.open(p.externalLink, '_blank');
+                    } else if (activeTab === 'photography' && p.seriesId) {
                       navigate({ to: '/photography/$id', params: { id: p.seriesId } });
                     } else if (p.link) {
                       window.open(p.link, '_blank');
