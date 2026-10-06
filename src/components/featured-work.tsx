@@ -102,7 +102,7 @@ export const photographyProjects = [
     title: "The Wedding Affairs",
     category: "Fashion & Wedding",
     image: "/wedding-affairs-thumb.jpeg",
-    seriesId: "wedding-affairs",
+    link: "https://drive.google.com/drive/folders/18NPrH39MMQrubnNR5NmJItZldHXYOr7O",
     imageClass: "object-[center_18%]",
   },
   {
